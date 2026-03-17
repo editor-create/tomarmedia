@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomar Media — News for WBE, MBE, DBE, VOB & LGBTQ+ Business Owners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0A0A0A;--gold:#C8A84B;--gold-lt:#E6C76A;--gold-dim:#C8A84B20;
+  --cream:#F2EDE4;--g1:#111111;--g2:#1A1A1A;--g3:#242424;--g4:#333333;
+  --g5:#505050;--tp:#F2EDE4;--ts:#A09080;--tm:#6A5A4A;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+  --bd:1px solid #242424;
+  --wbe:#7C3AED;--mbe:#2563EB;--dbe:#D97706;--vob:#059669;
+  --lgbtq:#DB2777;--dei:#0891B2;--latina:#DC2626;--aapi:#7C3AED;
+  --radius:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--tp);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ── CATEGORY BADGES ── */
+.badge{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.badge-wbe{background:#7C3AED22;color:#A78BFA;border:1px solid #7C3AED44}
+.badge-mbe{background:#2563EB22;color:#60A5FA;border:1px solid #2563EB44}
+.badge-dbe{background:#D9770622;color:#FCD34D;border:1px solid #D9770644}
+.badge-vob{background:#05966922;color:#34D399;border:1px solid #05966944}
+.badge-lgbtq{background:#DB277722;color:#F472B6;border:1px solid #DB277744}
+.badge-dei{background:#089IB222;color:#38BDF8;border:1px solid #0891B244}
+.badge-latina{background:#DC262622;color:#FCA5A5;border:1px solid #DC262644}
+.badge-aapi{background:#7C3AED22;color:#C4B5FD;border:1px solid #7C3AED44}
+.badge-funding{background:#C8A84B22;color:#C8A84B;border:1px solid #C8A84B44}
+.badge-policy{background:#64748B22;color:#94A3B8;border:1px solid #64748B44}
+.badge-business{background:#1A1A1A;color:#6A5A4A;border:1px solid #333}
+
+/* ── TICKER ── */
+.ticker{background:#0A0A0A;height:44px;overflow:hidden;display:flex;align-items:center;border-bottom:2px solid #C8A84B;border-top:1px solid #C8A84B33}
+.ticker-wrap{overflow:hidden;flex:1;position:relative}
+.ticker-inner{display:inline-flex;gap:60px;white-space:nowrap;animation:tick 50s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{font-family:var(--mono);font-size:12px;color:#E6C76A;font-weight:500;letter-spacing:.05em;display:inline-flex;align-items:center;gap:12px}
+.ti::before{content:'◆';font-size:7px;color:#C8A84B;opacity:.8}
+.ticker-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#000;background:#C8A84B;padding:6px 20px;white-space:nowrap;flex-shrink:0;animation:pulse-gold 1.5s ease-in-out infinite;border-right:2px solid #000}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse-gold{0%,100%{background:#C8A84B}50%{background:#E6C76A}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(10,10,10,.98);backdrop-filter:blur(12px);border-bottom:var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px}
+.logo-wrap{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logo{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold);letter-spacing:.01em;white-space:nowrap}
+.logo-divider{width:1px;height:20px;background:var(--g4)}
+.logo-sub{font-family:var(--mono);font-size:9px;color:var(--tm);letter-spacing:.12em;text-transform:uppercase}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ts);transition:color .15s,background .15s;padding:6px 12px;border-radius:4px;cursor:pointer}
+.nav-links a:hover,.nav-links a.on{color:#fff;background:var(--g3)}
+.nav-r{display:flex;gap:8px;align-items:center}
+.btn-signin{font-family:var(--mono);font-size:10px;color:var(--ts);cursor:pointer;padding:6px 14px;border:1px solid var(--g4);border-radius:4px;transition:all .15s;letter-spacing:.05em;text-transform:uppercase}
+.btn-signin:hover{color:#fff;border-color:var(--g5)}
+.btn-free{background:var(--gold);color:#000;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:none;cursor:pointer;border-radius:4px;transition:background .15s}
+.btn-free:hover{background:var(--gold-lt)}
+
+/* ── LIVE INDICATOR ── */
+.live{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#34D399;border:1px solid #34D39930;padding:3px 9px;border-radius:3px;animation:pulse-live 2s infinite}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#34D399;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes pulse-live{0%,100%{border-color:#34D39930}50%{border-color:#34D39960}}
+
+/* ── STATUS BAR ── */
+.status-bar{background:var(--g1);border-bottom:var(--bd);padding:7px 32px;display:flex;align-items:center;justify-content:space-between}
+.sb-left{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;color:var(--tm);letter-spacing:.05em}
+.sb-count{color:var(--gold);font-weight:500}
+.sb-right{font-family:var(--mono);font-size:10px;color:var(--tm);letter-spacing:.04em}
+.sb-refresh{color:var(--ts);cursor:pointer;margin-left:10px;transition:color .15s}
+.sb-refresh:hover{color:var(--gold)}
+
+/* ── SKELETON ── */
+.sk{background:linear-gradient(90deg,var(--g2) 25%,var(--g3) 50%,var(--g2) 75%);background-size:200% 100%;animation:sh 1.4s infinite;border-radius:3px}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ── SECTION HEADER ── */
+.sh{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;border-bottom:var(--bd);background:var(--g1)}
+.sh-title{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.sh-title::before{content:'';width:14px;height:2px;background:var(--gold)}
+.sh-r{display:flex;gap:12px;align-items:center}
+.sa{font-family:var(--mono);font-size:10px;color:var(--tm);cursor:pointer;transition:color .15s;letter-spacing:.06em}
+.sa:hover{color:var(--gold)}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 360px;border-bottom:var(--bd)}
+.hero-main{padding:32px;border-right:var(--bd);display:flex;flex-direction:column;justify-content:flex-start;cursor:pointer;transition:background .15s}
+.hero-main:hover{background:var(--g1)}
+.h-eye{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.h-hed{font-family:var(--serif);font-size:36px;font-weight:700;line-height:1.15;color:#FFFFFF;margin-bottom:12px;transition:color .15s}
+.hero-main:hover .h-hed{color:var(--gold-lt)}
+.h-deck{font-size:14px;color:var(--ts);line-height:1.7;max-width:580px;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.h-read{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:8px 18px;border-radius:4px;cursor:pointer;transition:all .15s;margin-bottom:16px;width:fit-content}
+.h-read:hover{background:var(--gold-dim)}
+.h-meta{font-family:var(--mono);font-size:10px;color:#8A7A6A;display:flex;align-items:center;gap:8px}
+.h-src{color:var(--gold)!important;font-weight:500}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--g4)}
+.h-side{display:flex;flex-direction:column}
+.si{flex:1;padding:18px 22px;border-bottom:var(--bd);cursor:pointer;transition:background .15s}
+.si:last-child{border-bottom:none}
+.si:hover{background:var(--g1)}
+.si-n{font-family:var(--mono);font-size:9px;color:var(--tm);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.si-hed{font-family:var(--serif);font-size:14px;font-weight:600;line-height:1.35;color:#FFFFFF;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;transition:color .15s}
+.si:hover .si-hed{color:var(--gold-lt)}
+.si-src{font-family:var(--mono);font-size:9px;color:#8A7A6A}
+
+/* ── FILTER TABS ── */
+.ftabs{display:flex;gap:4px}
+.ft{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;color:var(--ts);cursor:pointer;border:1px solid var(--g3);border-radius:4px;transition:all .15s}
+.ft.on,.ft:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+
+/* ── ARTICLE GRID ── */
+.ag{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:var(--bd)}
+.ac{padding:22px 24px;border-right:var(--bd);cursor:pointer;transition:background .15s,border-left .15s}
+.ac:last-child{border-right:none}
+.ac:hover{background:var(--g1);border-left:3px solid var(--gold)}
+.ac-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ac-cat{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.ac-time{font-family:var(--mono);font-size:9px;color:#8A7A6A}
+.ac-hed{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.35;color:#FFFFFF;margin-bottom:8px;transition:color .15s;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ac:hover .ac-hed{color:var(--gold-lt)}
+.ac-deck{font-size:12px;color:#A09080;line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ac-foot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:var(--bd)}
+.ac-src{font-family:var(--mono);font-size:9px;color:#8A7A6A}
+.ac-rd{font-family:var(--mono);font-size:9px;color:var(--gold);transition:gap .15s;display:flex;align-items:center;gap:4px}
+.ac:hover .ac-rd{gap:8px}
+
+/* ── COMMUNITY STRIP ── */
+.cs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:var(--bd)}
+.cc{padding:18px 22px;border-right:var(--bd);cursor:pointer;transition:background .15s;position:relative;overflow:hidden}
+.cc:last-child{border-right:none}
+.cc:hover{background:var(--g1)}
+.cc::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .25s}
+.cc:hover::after{width:100%}
+.cc-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8A7A6A;margin-bottom:6px}
+.cc-name{font-family:var(--serif);font-size:18px;font-weight:700;color:#FFFFFF;line-height:1.1;margin-bottom:4px;letter-spacing:.01em}
+.cc-n{font-family:var(--mono);font-size:10px;color:var(--gold)}
+
+/* ── NEWSLETTER ── */
+.nl-wrap{padding:32px;background:var(--g1);border-bottom:var(--bd);display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center}
+.nl-hed{font-family:var(--serif);font-size:20px;font-weight:700;color:#FFFFFF;margin-bottom:6px}
+.nl-desc{font-size:13px;color:var(--ts);line-height:1.65}
+.nl-form{display:flex;gap:8px}
+.nl-inp{background:var(--g2);border:1px solid var(--g3);color:#FFFFFF;font-family:var(--sans);font-size:13px;padding:10px 14px;outline:none;flex:1;border-radius:4px;transition:border-color .15s}
+.nl-inp::placeholder{color:var(--tm)}
+.nl-inp:focus{border-color:var(--gold)}
+.nl-btn{background:var(--gold);color:#000;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:10px 20px;border:none;cursor:pointer;border-radius:4px;white-space:nowrap;transition:background .15s}
+.nl-btn:hover{background:var(--gold-lt)}
+
+/* ── PRO BANNER ── */
+.pro{padding:32px;background:var(--g1);border-bottom:var(--bd);display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px}
+.pro-eye{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pro-hed{font-family:var(--serif);font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:6px}
+.pro-desc{font-size:13px;color:var(--ts);max-width:420px}
+.plans{display:flex;gap:10px}
+.plan{background:var(--g2);border:1px solid var(--g3);padding:20px;min-width:160px;cursor:pointer;transition:border-color .15s;position:relative;border-radius:6px}
+.plan.feat{border-color:var(--gold)}
+.plan:hover{border-color:var(--gold)}
+.fbadge{position:absolute;top:-1px;right:-1px;background:var(--gold);color:#000;font-family:var(--mono);font-size:7px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:0 6px 0 4px}
+.plan-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:4px}
+.plan-price{font-family:var(--serif);font-size:26px;font-weight:700;color:#FFFFFF;line-height:1;margin-bottom:2px}
+.plan-price sub{font-family:var(--mono);font-size:10px;color:var(--ts);font-weight:400}
+.plan-per{font-family:var(--mono);font-size:8px;color:var(--tm);margin-bottom:10px}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.plan-feats li{font-size:12px;color:var(--ts);display:flex;align-items:center;gap:5px}
+.plan-feats li::before{content:'✓';color:var(--gold);font-size:10px}
+.plan-btn{width:100%;padding:8px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .15s;border:1px solid var(--g4);background:transparent;color:var(--ts);border-radius:4px}
+.plan.feat .plan-btn{background:var(--gold);color:#000;border-color:var(--gold)}
+.plan:hover .plan-btn{border-color:var(--gold);color:var(--gold)}
+.plan.feat:hover .plan-btn{background:var(--gold-lt)}
+
+/* ── FOOTER ── */
+footer{background:var(--g1);border-top:var(--bd);padding:40px 32px 24px}
+.ft{display:grid;grid-template-columns:200px 1fr 1fr 1fr;gap:32px;margin-bottom:32px;padding-bottom:32px;border-bottom:var(--bd)}
+.ft-logo{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--gold);margin-bottom:8px}
+.ft-tag{font-size:12px;color:var(--ts);line-height:1.65;margin-bottom:14px}
+.ft-soc{display:flex;gap:6px}
+.soc{width:30px;height:30px;border-radius:4px;border:1px solid var(--g4);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--tm);cursor:pointer;transition:all .15s}
+.soc:hover{border-color:var(--gold);color:var(--gold)}
+.ft-ct{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.ft-l{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ft-l li a{font-size:12px;color:var(--ts);transition:color .15s}
+.ft-l li a:hover{color:#FFFFFF}
+.ft-bot{display:flex;align-items:center;justify-content:space-between}
+.ft-copy{font-family:var(--mono);font-size:10px;color:var(--tm)}
+.ft-leg{display:flex;gap:16px}
+.ft-leg a{font-family:var(--mono);font-size:10px;color:var(--tm);transition:color .15s}
+.ft-leg a:hover{color:var(--gold)}
+
+/* ── MODAL ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999;align-items:center;justify-content:center}
+.overlay.on{display:flex}
+.modal{background:var(--g2);border:1px solid var(--g3);padding:36px;max-width:400px;width:100%;position:relative;border-radius:8px}
+.mx{position:absolute;top:12px;right:14px;font-size:18px;color:var(--tm);cursor:pointer;background:none;border:none;line-height:1;transition:color .15s}
+.mx:hover{color:#fff}
+.m-eye{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.m-hed{font-family:var(--serif);font-size:22px;font-weight:700;color:#FFFFFF;margin-bottom:6px}
+.m-sub{font-size:13px;color:var(--ts);margin-bottom:20px;line-height:1.6}
+.m-tabs{display:flex;gap:4px;margin-bottom:18px}
+.mtab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;color:var(--tm);cursor:pointer;border:1px solid var(--g4);border-radius:4px;transition:all .15s}
+.mtab.on{color:#000;background:var(--gold);border-color:var(--gold)}
+.mf{display:flex;flex-direction:column;gap:8px}
+.inp{background:var(--g3);border:1px solid var(--g4);color:#FFFFFF;font-family:var(--sans);font-size:13px;padding:10px 12px;outline:none;border-radius:4px;width:100%;transition:border-color .15s}
+.inp::placeholder{color:var(--tm)}
+.inp:focus{border-color:var(--gold)}
+select.inp{appearance:none}
+
+/* ── NOTIFY ── */
+.notify{background:var(--g2);border-bottom:var(--bd);padding:8px 32px;font-family:var(--mono);font-size:10px;color:var(--ts);display:none;align-items:center;gap:10px}
+.notify.warn{display:flex;color:#D97706}
+.notify.info{display:flex}
+.notify-x{cursor:pointer;color:var(--tm);margin-left:auto;font-size:14px;transition:color .15s}
+.notify-x:hover{color:#fff}
+.empty{padding:36px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--tm)}
+
+/* ── ANIMATIONS ── */
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ac{animation:fu .35s ease both}
+.ac:nth-child(1){animation-delay:.05s}
+.ac:nth-child(2){animation-delay:.1s}
+.ac:nth-child(3){animation-delay:.15s}
+.ac:nth-child(4){animation-delay:.2s}
+.ac:nth-child(5){animation-delay:.25s}
+.ac:nth-child(6){animation-delay:.3s}
+
+/* ── FUNDING GRID ── */
+.funding-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:var(--bd)}
+.fg-card{padding:22px 24px;border-right:var(--bd);transition:background .15s;cursor:pointer}
+.fg-card:nth-child(3n){border-right:none}
+.fg-card:nth-child(n+4){border-top:var(--bd)}
+.fg-card:hover{background:var(--g1)}
+.fg-amt{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+.fg-name{font-size:14px;font-weight:500;color:#FFFFFF;margin-bottom:4px;line-height:1.3}
+.fg-meta{font-family:var(--mono);font-size:10px;color:#8A7A6A;margin-bottom:10px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .h-side{display:none}
+  .hero-main{padding:20px 16px}
+  .h-hed{font-size:26px}
+  .ag{grid-template-columns:1fr}
+  .ac{border-right:none;border-bottom:var(--bd)}
+  .cs{grid-template-columns:repeat(2,1fr)}
+  .funding-grid{grid-template-columns:repeat(2,1fr)}
+  .fg-card:nth-child(3n){border-right:var(--bd)}
+  .fg-card:nth-child(2n){border-right:none}
+  .nl-wrap{grid-template-columns:1fr;padding:20px 16px}
+  .pro{grid-template-columns:1fr}
+  .plans{flex-direction:column}
+  .ft{grid-template-columns:1fr 1fr}
+  .sh,.status-bar,.notify{padding-left:16px;padding-right:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">◆ BREAKING</div>
+  <div class="ticker-wrap">
+    <div class="ticker-inner" id="ticker-inner">
+      <span class="ti">Loading live news from Black Enterprise, SBA.gov, MBDA and more...</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <span class="logo">Tomar Media</span>
+    <div class="logo-divider"></div>
+    <span class="logo-sub">tomarmedia.com</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="on" onclick="nav_filter('all',this);return false">All</a></li>
+    <li><a href="#" onclick="nav_filter('wbe',this);return false">WBE</a></li>
+    <li><a href="#" onclick="nav_filter('mbe',this);return false">MBE</a></li>
+    <li><a href="#" onclick="nav_filter('dbe',this);return false">DBE</a></li>
+    <li><a href="#" onclick="nav_filter('vob',this);return false">VOB</a></li>
+    <li><a href="#" onclick="nav_filter('lgbtq',this);return false">LGBTQ+</a></li>
+    <li><a href="#" onclick="nav_filter('dei',this);return false">DE&amp;I</a></li>
+    <li><a href="#" onclick="nav_filter('funding',this);return false">Funding</a></li>
+    <li><a href="#" onclick="nav_filter('policy',this);return false">Policy</a></li>
+  </ul>
+  <div class="nav-r">
+    <span class="btn-signin" onclick="openModal('login')">Sign In</span>
+    <button class="btn-free" onclick="openModal('sub')">Subscribe Free</button>
+  </div>
+</nav>
+
+<!-- NOTIFY BAR -->
+<div class="notify" id="notify">
+  <span id="notify-msg"></span>
+  <span class="notify-x" onclick="this.parentElement.style.display='none'">×</span>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="sb-left">
+    <div class="live"><span class="live-dot"></span>Live</div>
+    <span id="sb-count" class="sb-count">Loading feeds...</span>
+    <span id="sb-sources">—</span>
+  </div>
+  <div class="sb-right">
+    <span id="sb-time">—</span>
+    <span class="sb-refresh" onclick="reload()" title="Refresh feeds">↻ Refresh</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-main" id="hero-main" onclick="hero_click()">
+    <div class="h-eye">
+      <span class="badge badge-funding">Top Story</span>
+      <span class="badge badge-business" id="h-cat">Loading</span>
+      <div class="live"><span class="live-dot"></span>Live</div>
+    </div>
+    <h1 class="h-hed" id="h-hed">
+      <div class="sk sk-line h"></div>
+      <div class="sk sk-line h" style="width:72%;margin-top:8px"></div>
+    </h1>
+    <p class="h-deck" id="h-deck">
+      <span class="sk sk-line" style="display:block"></span>
+      <span class="sk sk-line" style="display:block"></span>
+      <span class="sk sk-line s" style="display:block"></span>
+    </p>
+    <a class="h-read" id="h-link" href="#" target="_blank" rel="noopener noreferrer">
+      Read full story <span class="ar">→</span>
+    </a>
+    <div class="h-meta">
+      <span class="h-src" id="h-src">—</span>
+      <span class="dot"></span>
+      <span id="h-time">—</span>
+      <span class="dot"></span>
+      <span id="h-ago">—</span>
+    </div>
+  </div>
+  <div class="h-side" id="h-side">
+    <div class="si" id="si0"><div class="si-n">02</div><div class="si-cat">Loading</div><div class="si-hed"><span class="sk sk-line" style="display:block"></span><span class="sk sk-line s" style="display:block"></span></div><div class="si-meta">—</div></div>
+    <div class="si" id="si1"><div class="si-n">03</div><div class="si-cat">Loading</div><div class="si-hed"><span class="sk sk-line" style="display:block"></span><span class="sk sk-line s" style="display:block"></span></div><div class="si-meta">—</div></div>
+    <div class="si" id="si2"><div class="si-n">04</div><div class="si-cat">Loading</div><div class="si-hed"><span class="sk sk-line" style="display:block"></span><span class="sk sk-line s" style="display:block"></span></div><div class="si-meta">—</div></div>
+  </div>
+</section>
+
+<!-- COMMUNITY STRIP -->
+<div class="sh">
+  <div class="sh-title">Browse by community</div>
+  <span class="sa">View all communities →</span>
+</div>
+<div class="cs">
+  <div class="cc" onclick="nav_filter('wbe',null)"><div class="cc-lbl">Certification</div><div class="cc-name">WBE</div><div class="cc-n" id="cn-wbe">— stories</div></div>
+  <div class="cc" onclick="nav_filter('mbe',null)"><div class="cc-lbl">Certification</div><div class="cc-name">MBE</div><div class="cc-n" id="cn-mbe">— stories</div></div>
+  <div class="cc" onclick="nav_filter('black',null)"><div class="cc-lbl">Community</div><div class="cc-name">Black-Owned</div><div class="cc-n" id="cn-black">— stories</div></div>
+  <div class="cc" onclick="nav_filter('dbe',null)"><div class="cc-lbl">Certification</div><div class="cc-name">DBE</div><div class="cc-n" id="cn-dbe">— stories</div></div>
+  <div class="cc" onclick="nav_filter('vob',null)"><div class="cc-lbl">Certification</div><div class="cc-name">VOB</div><div class="cc-n" id="cn-vob">— stories</div></div>
+  <div class="cc" onclick="nav_filter('lgbtq',null)"><div class="cc-lbl">Community</div><div class="cc-name">LGBTQ+</div><div class="cc-n" id="cn-lgbtq">— stories</div></div>
+  <div class="cc" onclick="nav_filter('dei',null)"><div class="cc-lbl">Focus</div><div class="cc-name">DE&amp;I</div><div class="cc-n" id="cn-dei">— stories</div></div>
+  <div class="cc" onclick="nav_filter('latina',null)"><div class="cc-lbl">Community</div><div class="cc-name">Latina</div><div class="cc-n" id="cn-latina">— stories</div></div>
+  <div class="cc" onclick="nav_filter('aapi',null)"><div class="cc-lbl">Community</div><div class="cc-name">AAPI</div><div class="cc-n" id="cn-aapi">— stories</div></div>
+</div>
+
+<!-- TOP STORIES -->
+<div class="sh">
+  <div class="sh-title">Today's top stories</div>
+  <div class="sh-r">
+    <div class="ftabs" id="grid-tabs">
+      <div class="ft on" onclick="grid_filter('all',this)">All</div>
+      <div class="ft" onclick="grid_filter('wbe',this)">WBE</div>
+      <div class="ft" onclick="grid_filter('mbe',this)">MBE</div>
+      <div class="ft" onclick="grid_filter('dbe',this)">DBE</div>
+      <div class="ft" onclick="grid_filter('funding',this)">Funding</div>
+    </div>
+    <span class="sa">All stories →</span>
+  </div>
+</div>
+<div class="ag" id="art-grid">
+  <div class="ac"><div class="sk sk-img"></div><div class="sk sk-line" style="height:20px"></div><div class="sk sk-line"></div><div class="sk sk-line s"></div></div>
+  <div class="ac"><div class="sk sk-img"></div><div class="sk sk-line" style="height:20px"></div><div class="sk sk-line"></div><div class="sk sk-line s"></div></div>
+  <div class="ac"><div class="sk sk-img"></div><div class="sk sk-line" style="height:20px"></div><div class="sk sk-line"></div><div class="sk sk-line s"></div></div>
+</div>
+
+<!-- FUNDING BAND -->
+<div class="sh"><div class="sh-title">Active funding opportunities</div><span class="sa">View all funding →</span></div>
+<div class="funding-grid">
+  <div class="fg-card">
+    <div class="fg-amt">$500M</div>
+    <div class="fg-name">SBA Minority Business Loans</div>
+    <div class="fg-meta">Open Now · SBA.gov</div>
+    <span class="badge badge-mbe">MBE</span>
+  </div>
+  <div class="fg-card">
+    <div class="fg-amt">$25M</div>
+    <div class="fg-name">Knight Foundation Media Grants</div>
+    <div class="fg-meta">Deadline Apr 15 · knightfoundation.org</div>
+    <span class="badge badge-dei">DE&amp;I</span>
+  </div>
+  <div class="fg-card">
+    <div class="fg-amt">$1B</div>
+    <div class="fg-name">Chase Supplier Diversity Fund</div>
+    <div class="fg-meta">Open · jpmorgan.com</div>
+    <span class="badge badge-dbe">DBE</span>
+  </div>
+  <div class="fg-card">
+    <div class="fg-amt">$100M</div>
+    <div class="fg-name">Google Fund · Women of Color</div>
+    <div class="fg-meta">Rolling · google.com</div>
+    <span class="badge badge-wbe">WBE</span>
+  </div>
+  <div class="fg-card">
+    <div class="fg-amt">$50M</div>
+    <div class="fg-name">MBDA Business Center Grants</div>
+    <div class="fg-meta">Ongoing · mbda.gov</div>
+    <span class="badge badge-mbe">MBE</span>
+  </div>
+  <div class="fg-card">
+    <div class="fg-amt">$25M</div>
+    <div class="fg-name">VA Veteran Business Fund</div>
+    <div class="fg-meta">Open · va.gov</div>
+    <span class="badge badge-vob">VOB</span>
+  </div>
+</div>
+
+<!-- POLICY + NEWSLETTER -->
+<div class="sh"><div class="sh-title">Policy &amp; advocacy</div><span class="sa">All policy →</span></div>
+<div class="ag" id="policy-grid">
+  <div class="ac"><div class="sk" style="height:14px;margin-bottom:10px"></div><div class="sk"></div><div class="sk" style="width:60%"></div></div>
+  <div class="ac"><div class="sk" style="height:14px;margin-bottom:10px"></div><div class="sk"></div><div class="sk" style="width:60%"></div></div>
+  <div class="ac"><div class="sk" style="height:14px;margin-bottom:10px"></div><div class="sk"></div><div class="sk" style="width:60%"></div></div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="nl-wrap">
+  <div>
+    <div class="nl-hed">Daily briefing for WBE, MBE, DBE &amp; VOB owners.</div>
+    <div class="nl-desc">Funding alerts, federal contracts, policy changes — delivered every morning. Free forever.</div>
+  </div>
+  <div class="nl-form">
+    <input class="nl-inp" type="email" placeholder="your@email.com">
+    <button class="nl-btn">Subscribe Free →</button>
+  </div>
+</div>
+
+<!-- PRO BANNER -->
+<div class="pro">
+  <div>
+    <div class="pro-eye">Tomar Media Pro</div>
+    <div class="pro-hed">Go deeper. Move faster. Stay ahead.</div>
+    <div class="pro-desc">Unlimited access, daily briefings, grant alerts, full policy archive — zero advertising, ever.</div>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-lbl">Free</div>
+      <div class="plan-price">$0<sub>/mo</sub></div>
+      <div class="plan-per">Forever free</div>
+      <ul class="plan-feats"><li>10 articles/month</li><li>Weekly digest</li><li>Community access</li></ul>
+      <button class="plan-btn" onclick="openModal('sub')">Get started</button>
+    </div>
+    <div class="plan feat">
+      <div class="fbadge">Popular</div>
+      <div class="plan-lbl">Pro</div>
+      <div class="plan-price">$9<sub>/mo</sub></div>
+      <div class="plan-per">or $79/yr — save 27%</div>
+      <ul class="plan-feats"><li>Unlimited articles</li><li>Daily 7am briefing</li><li>Grant alerts</li><li>Policy archive</li><li>No ads ever</li></ul>
+      <button class="plan-btn" onclick="openModal('sub')">Start Pro free →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="ft-logo">Tomar Media</div>
+      <div class="ft-tag">Daily news for WBE, MBE, DBE, VOB, LGBTQ+ and DE&I business owners across the United States.</div>
+      <div class="ft-soc"><div class="soc">in</div><div class="soc">ig</div><div class="soc">x</div><div class="soc">yt</div></div>
+    </div>
+    <div>
+      <div class="ft-ct">Communities</div>
+      <ul class="ft-l"><li><a href="#">WBE — Women-Owned</a></li><li><a href="#">MBE — Minority-Owned</a></li><li><a href="#">Black-Owned Business</a></li><li><a href="#">DBE — Disadvantaged</a></li><li><a href="#">VOB — Veteran-Owned</a></li><li><a href="#">LGBTQ+ Business</a></li><li><a href="#">DE&amp;I Focus</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-ct">Topics</div>
+      <ul class="ft-l"><li><a href="#">Funding &amp; Grants</a></li><li><a href="#">Policy</a></li><li><a href="#">Technology</a></li><li><a href="#">Real Estate</a></li><li><a href="#">Legal</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-ct">Company</div>
+      <ul class="ft-l"><li><a href="#">About Tomar Media</a></li><li><a href="#">Advertise</a></li><li><a href="#">Media Kit</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2025 Tomar Media · tomarmedia.com</div>
+    <div class="ft-leg"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">DMCA</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="modal" onclick="modal_out(event)">
+  <div class="modal">
+    <button class="mx" onclick="closeModal()">×</button>
+    <div class="m-eye">Join Tomar Media</div>
+    <div class="m-hed">Start reading free</div>
+    <div class="m-sub">Create your free account to save articles, get the daily briefing, and join thousands of founders.</div>
+    <div class="m-tabs">
+      <div class="mtab on" onclick="m_tab('sub',this)">Subscribe</div>
+      <div class="mtab" onclick="m_tab('login',this)">Sign In</div>
+    </div>
+    <div class="mf" id="mf-sub">
+      <input class="inp" type="text" placeholder="Full name">
+      <input class="inp" type="email" placeholder="Email address">
+      <select class="inp">
+        <option value="">Community (optional)</option>
+        <option>WBE — Women-owned business</option><option>MBE — Minority-owned business</option>
+        <option>DBE — Disadvantaged business</option><option>VOB — Veteran-owned business</option>
+        <option>LGBTQ+ business owner</option><option>Latina entrepreneur</option>
+        <option>AAPI business owner</option><option>Ally / supporter</option>
+        <option>Latina entrepreneur</option><option>AAPI business owner</option>
+        <option>Native business</option><option>Ally / supporter</option>
+      </select>
+      <button class="nl-btn" style="margin-top:4px">Create free account →</button>
+    </div>
+    <div class="mf" id="mf-login" style="display:none">
+      <input class="inp" type="email" placeholder="Email address">
+      <input class="inp" type="password" placeholder="Password">
+      <button class="nl-btn" style="margin-top:4px">Sign in →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+const R2J = 'https://api.rss2json.com/v1/api.json?count=10&rss_url=';
+
+// Real public RSS feeds — no API key required
+const FEEDS = [
+
+  // ── GOVERNMENT OFFICIAL SOURCES ──────────────────────────────────────────
+  { url:'https://www.sba.gov/rss', source:'SBA.gov', tags:['funding','policy','wbe','mbe','dbe','vob'] },
+  { url:'https://www.mbda.gov/rss.xml', source:'MBDA.gov', tags:['mbe','dbe','funding','policy'] },
+
+  // ── WBE — WOMEN BUSINESS ENTERPRISE ──────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=WBE+women+business+enterprise+certification+federal+contract+award+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['wbe','policy'] },
+  { url:'https://news.google.com/rss/search?q=WBENC+women+owned+business+certification+supplier+diversity+contract&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['wbe','policy'] },
+  { url:'https://news.google.com/rss/search?q=women+owned+small+business+WOSB+federal+set-aside+procurement+SBA&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['wbe','funding','policy'] },
+  { url:'https://news.google.com/rss/search?q=women+business+enterprise+grant+loan+capital+mid-size+company+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['wbe','funding'] },
+
+  // ── MBE — MINORITY BUSINESS ENTERPRISE ───────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=MBE+minority+business+enterprise+certification+NMSDC+supplier+diversity+contract&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['mbe','policy'] },
+  { url:'https://news.google.com/rss/search?q=minority+owned+business+federal+contract+award+procurement+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['mbe','policy','funding'] },
+  { url:'https://news.google.com/rss/search?q=minority+business+development+grant+loan+capital+investment+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['mbe','funding'] },
+  { url:'https://news.google.com/rss/search?q=Black+Hispanic+Asian+minority+business+contract+award+corporate+diversity+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['mbe','dei','policy'] },
+
+  // ── DBE — DISADVANTAGED BUSINESS ENTERPRISE ───────────────────────────────
+  { url:'https://news.google.com/rss/search?q=DBE+disadvantaged+business+enterprise+DOT+federal+transportation+contract+award&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['dbe','policy'] },
+  { url:'https://news.google.com/rss/search?q=DBE+program+construction+engineering+architecture+infrastructure+contract+minority&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['dbe','policy','funding'] },
+  { url:'https://news.google.com/rss/search?q=SBA+8a+program+certification+federal+contract+minority+disadvantaged+business&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['dbe','mbe','policy','funding'] },
+
+  // ── VOB — VETERAN-OWNED BUSINESS ─────────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=SDVOSB+service+disabled+veteran+owned+small+business+federal+contract+VA+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['vob','policy','funding'] },
+  { url:'https://news.google.com/rss/search?q=VOSB+veteran+owned+small+business+certification+federal+procurement+contract+award&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['vob','policy'] },
+  { url:'https://news.google.com/rss/search?q=veteran+business+grant+loan+SBA+Boots+to+Business+funding+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['vob','funding'] },
+  { url:'https://news.google.com/rss/search?q=veteran+entrepreneur+business+growth+federal+contract+set-aside+program&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['vob','policy','funding'] },
+
+  // ── FEDERAL CONTRACTS & PROCUREMENT ──────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=federal+contract+award+minority+women+veteran+disadvantaged+business+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','dbe','mbe','vob','wbe'] },
+  { url:'https://news.google.com/rss/search?q=supplier+diversity+corporate+procurement+minority+women+veteran+contract+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','dei','mbe','wbe'] },
+  { url:'https://news.google.com/rss/search?q=SAM.gov+federal+procurement+small+business+set-aside+minority+women+veteran&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','dbe','mbe','vob','wbe'] },
+
+  // ── GRANTS & FUNDING ──────────────────────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=small+business+grant+minority+women+veteran+disadvantaged+2026+apply&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['funding','wbe','mbe','dbe','vob'] },
+  { url:'https://news.google.com/rss/search?q=SBA+loan+program+minority+women+veteran+business+capital+access+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['funding','policy','wbe','mbe','vob'] },
+  { url:'https://news.google.com/rss/search?q=corporate+grant+program+minority+women+owned+business+supplier+diversity+fund&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['funding','dei','wbe','mbe'] },
+
+  // ── POLICY & LEGISLATION ──────────────────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=small+business+policy+congress+legislation+minority+women+veteran+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','funding'] },
+  { url:'https://news.google.com/rss/search?q=supplier+diversity+policy+corporate+DEI+executive+order+minority+women+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','dei'] },
+
+  // ── CERTIFICATION NEWS ────────────────────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=business+certification+WBE+MBE+DBE+SDVOSB+LGBTBE+application+process+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['policy','wbe','mbe','dbe','vob','lgbtq'] },
+
+  // ── DE&I & LGBTQ+ ─────────────────────────────────────────────────────────
+  { url:'https://news.google.com/rss/search?q=LGBTQ+business+NGLCC+certification+supplier+diversity+corporate+contract+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['lgbtq','dei'] },
+  { url:'https://news.google.com/rss/search?q=diversity+equity+inclusion+business+supplier+corporate+spending+2026&hl=en-US&gl=US&ceid=US:en', source:'Google News', tags:['dei','policy'] },
+
+  // ── BLACK ENTERPRISE (filtered for business) ──────────────────────────────
+  { url:'https://www.blackenterprise.com/feed/', source:'Black Enterprise', tags:['mbe','dei','funding','policy'] }
+
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let ALL = [];
+let HERO_URL = '#';
+let GRID_FILTER = 'all';
+
+// ─── HELPERS ────────────────────────────────────────────────────────────────
+function strip(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return (d.textContent || d.innerText || '').replace(/\s+/g,' ').trim().slice(0,220);
+}
+
+function ago(d) {
+  if (!d) return 'Recently';
+  const s = (Date.now() - new Date(d)) / 1000;
+  if (s < 3600)  return Math.round(s/60)   + 'm ago';
+  if (s < 86400) return Math.round(s/3600) + 'h ago';
+  return Math.round(s/86400) + 'd ago';
+}
+
+function fmtDate(d) {
+  if (!d) return '';
+  try { return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+  catch(e) { return ''; }
+}
+
+function catLabel(tags) {
+  const m = {
+    wbe:{label:'WBE',cls:'badge-wbe'},
+    mbe:{label:'MBE',cls:'badge-mbe'},
+    dbe:{label:'DBE',cls:'badge-dbe'},
+    vob:{label:'VOB',cls:'badge-vob'},
+    lgbtq:{label:'LGBTQ+',cls:'badge-lgbtq'},
+    dei:{label:'DE&I',cls:'badge-dei'},
+    latina:{label:'Latina',cls:'badge-latina'},
+    aapi:{label:'AAPI',cls:'badge-aapi'},
+    funding:{label:'Funding',cls:'badge-funding'},
+    policy:{label:'Policy',cls:'badge-policy'},
+    minority:{label:'Minority',cls:'badge-mbe'},
+    women:{label:'WBE',cls:'badge-wbe'},
+    bipoc:{label:'MBE',cls:'badge-mbe'}
+  };
+  for (const t of tags) if (m[t]) return {label:m[t].label, cls:m[t].cls};
+  return {label:'Business', cls:'badge-business'};
+}
+
+function notify(msg, type='warn') {
+  const el = document.getElementById('notify');
+  document.getElementById('notify-msg').textContent = msg;
+  el.className = 'notify ' + type;
+}
+
+// ─── BUSINESS KEYWORD FILTER ────────────────────────────────────────────────
+const BIZ_KEYWORDS = [
+  'business','entrepreneur','startup','contract','grant','loan','fund','capital',
+  'sba','mbe','wbe','dbe','vob','lgbtq','diversity','equity','inclusion','dei',
+  'procurement','supplier','federal','certification','award','revenue','invest',
+  'company','firm','owner','founder','enterprise','economic','commerce','market',
+  'employ','workforce','hiring','mentor','accelerat','incubat','pitch','venture',
+  'construction','engineering','architect','technology','real estate','retail',
+  'finance','bank','credit','insurance','legal','policy','regulation','congress',
+  'veteran','minority','women','latina','aapi','bipoc','black-owned','black owned',
+  'small business','woman-owned','woman owned','minority-owned','disadvantaged',
+  'net worth','revenue','profit','revenue','acquisition','merger','ipo','pitch deck',
+  'executive','ceo','cfo','coo','president','vice president','director','manager'
+];
+
+// Words that indicate non-business entertainment content — exclude these
+const EXCLUDE_KEYWORDS = [
+  'oscar','academy award','grammy','emmy','tony award','billboard','box office',
+  'movie','film','album','single','tour','concert','celebrity','red carpet',
+  'dating','relationship','marriage','divorce','pregnancy','baby','fashion show',
+  'sports','nfl','nba','mlb','nhl','soccer','football','basketball','baseball',
+  'reality tv','bachelor','bachelorette','housewives','kardashian','beyonce',
+  'rihanna','drake','jay-z','kanye','taylor swift','cardi b','nicki minaj'
+];
+
+function isBusinessArticle(title, desc) {
+  const text = (title + ' ' + desc).toLowerCase();
+  // First check exclusions
+  if (EXCLUDE_KEYWORDS.some(kw => text.includes(kw))) return false;
+  // Then check business keywords
+  return BIZ_KEYWORDS.some(kw => text.includes(kw));
+}
+
+// ─── FETCH ONE FEED ─────────────────────────────────────────────────────────
+async function fetchFeed(feed) {
+  try {
+    const r = await fetch(R2J + encodeURIComponent(feed.url), { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) return [];
+    const j = await r.json();
+    if (j.status !== 'ok' || !Array.isArray(j.items)) return [];
+    return j.items
+      .map(it => ({
+        title:   (it.title || '').replace(/&amp;/g,'&').replace(/&#8217;/g,"'").replace(/&#8216;/g,"'").trim(),
+        link:    it.link  || '#',
+        desc:    strip(it.description || it.content || ''),
+        date:    it.pubDate || '',
+        source:  feed.source,
+        image:   it.enclosure?.link || it.thumbnail || extractImg(it.description || it.content || '') || null,
+        tags:    feed.tags
+      }))
+      .filter(a => isBusinessArticle(a.title, a.desc));
+  } catch(e) { return []; }
+}
+
+function extractImg(html) {
+  const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return m ? m[1] : null;
+}
+
+// ─── RENDER TICKER ──────────────────────────────────────────────────────────
+function renderTicker(arts) {
+  const titles = arts.slice(0,12).map(a => a.title).filter(Boolean);
+  if (!titles.length) return;
+  const doubled = [...titles,...titles];
+  document.getElementById('ticker-inner').innerHTML =
+    doubled.map(t => `<span class="ti">${t}</span>`).join('');
+}
+
+// ─── RENDER HERO ────────────────────────────────────────────────────────────
+function renderHero(arts) {
+  if (!arts.length) return;
+  const a = arts[0];
+  HERO_URL = a.link;
+  const cat = catLabel(a.tags);
+  document.getElementById('h-hed').textContent   = a.title || 'Untitled';
+  document.getElementById('h-deck').textContent  = a.desc  || 'Click to read the full story at the original source.';
+  document.getElementById('h-cat').className     = 'badge ' + cat.cls;
+  document.getElementById('h-cat').textContent   = cat.label;
+  document.getElementById('h-src').textContent   = a.source;
+  document.getElementById('h-time').textContent  = fmtDate(a.date);
+  document.getElementById('h-ago').textContent   = ago(a.date);
+  document.getElementById('h-link').href         = a.link;
+
+  for (let i = 0; i < 3; i++) {
+    const si = arts[i+1];
+    const el = document.getElementById('si'+i);
+    if (!si || !el) continue;
+    const siCat = catLabel(si.tags);
+    el.innerHTML = `
+      <div class="si-n">0${i+2} <span class="badge ${siCat.cls}">${siCat.label}</span></div>
+      <div class="si-hed">${si.title}</div>
+      <div class="si-src">${si.source} · ${ago(si.date)}</div>`;
+    el.onclick = () => window.open(si.link, '_blank', 'noopener,noreferrer');
+  }
+}
+
+// ─── RENDER ARTICLE GRID ────────────────────────────────────────────────────
+function renderGrid(arts) {
+  const grid = document.getElementById('art-grid');
+  const show = arts.slice(0, 6);
+
+  if (!show.length) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">No stories match this filter right now.</div>`;
+    return;
+  }
+
+  grid.innerHTML = show.map((a, i) => {
+    const cat = catLabel(a.tags);
+    return `
+    <div class="ac" style="animation-delay:${i * 0.07}s" onclick="window.open('${a.link.replace(/'/g,"\\'")}','_blank','noopener,noreferrer')">
+      <div class="ac-top">
+        <span class="badge ${cat.cls}">${cat.label}</span>
+        <span class="ac-time">${ago(a.date)}</span>
+      </div>
+      <div class="ac-hed">${a.title}</div>
+      <div class="ac-deck">${a.desc}</div>
+      <div class="ac-foot">
+        <span class="ac-src">${a.source}</span>
+        <span class="ac-rd">Read →</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── RENDER POLICY GRID ─────────────────────────────────────────────────────
+function renderPolicy(arts) {
+  const pol = arts.filter(a => a.tags.includes('policy') || a.tags.includes('funding')).slice(0, 3);
+  const grid = document.getElementById('policy-grid');
+  if (!pol.length) return;
+  grid.innerHTML = pol.map((a, i) => {
+    const cat = catLabel(a.tags);
+    return `
+    <div class="ac" style="animation-delay:${i * 0.07}s" onclick="window.open('${a.link.replace(/'/g,"\\'")}','_blank','noopener,noreferrer')">
+      <div class="ac-top">
+        <span class="badge ${cat.cls}">${cat.label}</span>
+        <span class="ac-time">${ago(a.date)}</span>
+      </div>
+      <div class="ac-hed">${a.title}</div>
+      <div class="ac-deck">${a.desc}</div>
+      <div class="ac-foot">
+        <span class="ac-src">${a.source}</span>
+        <span class="ac-rd">Read →</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── UPDATE COMMUNITY COUNTS ────────────────────────────────────────────────
+function updateCounts(arts) {
+  const c = {wbe:0, mbe:0, black:0, dbe:0, vob:0, lgbtq:0, dei:0, latina:0, aapi:0, minority:0, women:0};
+  arts.forEach(a => a.tags.forEach(t => { if (c[t] !== undefined) c[t]++; }));
+  Object.keys(c).forEach(k => {
+    const el = document.getElementById('cn-' + k);
+    if (el) el.textContent = c[k] + (c[k] === 1 ? ' story' : ' stories') + ' loaded';
+  });
+}
+
+// ─── UPDATE STATUS BAR ──────────────────────────────────────────────────────
+function updateStatus(arts, sources) {
+  document.getElementById('sb-count').textContent = arts.length + ' stories loaded';
+  document.getElementById('sb-sources').textContent = 'from ' + sources.join(', ');
+  const now = new Date();
+  document.getElementById('sb-time').textContent = 'Updated ' + now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  // Start countdown to next refresh
+  startCountdown(300); // refresh every 5 minutes
+}
+
+let countdownInterval = null;
+function startCountdown(seconds) {
+  if (countdownInterval) clearInterval(countdownInterval);
+  let remaining = seconds;
+  const el = document.getElementById('sb-time');
+  countdownInterval = setInterval(() => {
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(countdownInterval);
+      reload();
+    } else {
+      const m = Math.floor(remaining / 60);
+      const s = remaining % 60;
+      const timeStr = document.getElementById('sb-time').textContent.split('·')[0].trim();
+      document.getElementById('sb-time').textContent = timeStr + ' · Next refresh ' + (m > 0 ? m + 'm ' : '') + s + 's';
+    }
+  }, 1000);
+}
+
+// ─── FILTER ─────────────────────────────────────────────────────────────────
+function nav_filter(tag, el) {
+  GRID_FILTER = tag;
+  if (el) {
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('on'));
+    el.classList.add('on');
+  }
+  const f = tag === 'all' ? ALL : ALL.filter(a => a.tags.includes(tag));
+  renderHero(f.length ? f : ALL);
+  renderGrid(f.length ? f : ALL);
+}
+
+function grid_filter(tag, el) {
+  document.querySelectorAll('.ft').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  const f = tag === 'all' ? ALL : ALL.filter(a => a.tags.includes(tag));
+  renderGrid(f.length ? f : ALL);
+}
+
+function hero_click() {
+  if (HERO_URL && HERO_URL !== '#') window.open(HERO_URL, '_blank', 'noopener,noreferrer');
+}
+
+// ─── MAIN LOAD ──────────────────────────────────────────────────────────────
+async function load() {
+  try {
+    const results = await Promise.allSettled(FEEDS.map(f => fetchFeed(f)));
+    const items   = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
+
+    // deduplicate by lowercase title
+    const seen = new Set();
+    ALL = items.filter(a => {
+      const k = a.title.toLowerCase().trim();
+      if (!a.title || seen.has(k)) return false;
+      seen.add(k); return true;
+    });
+
+    // sort newest first
+    ALL.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const loaded = results.filter(r => r.status === 'fulfilled' && r.value.length > 0);
+    const srcNames = [...new Set(ALL.map(a => a.source))].slice(0, 4);
+
+    if (!ALL.length) {
+      showFallback();
+      return;
+    }
+
+    renderTicker(ALL);
+    renderHero(ALL);
+    renderGrid(ALL);
+    renderPolicy(ALL);
+    updateCounts(ALL);
+    updateStatus(ALL, srcNames);
+
+    if (loaded.length < FEEDS.length / 2) {
+      notify(`${loaded.length} of ${FEEDS.length} feeds loaded. Some sources may be temporarily unavailable.`, 'warn');
+    }
+
+  } catch(e) {
+    console.error('Load error:', e);
+    showFallback();
+  }
+}
+
+// ─── FALLBACK DATA (shown if no feeds load) ─────────────────────────────────
+function showFallback() {
+  notify('Live feeds require an internet connection and a web server (not a local file). Showing sample content. Host on tomarmedia.com to enable live feeds.', 'warn');
+
+  const FB = [
+    {title:'SBA Announces Expanded Minority Business Loan Program for 2026',link:'https://www.sba.gov/newsroom',desc:'The Small Business Administration has launched new targeted lending programs for MBE and DBE certified businesses, lowering barriers and expanding eligibility.',date:new Date().toISOString(),source:'SBA.gov',image:null,tags:['mbe','dbe','funding','policy']},
+    {title:'WBE Certified Women-Owned Businesses Grow 4× Faster Than National Average',link:'https://www.nwbc.gov',desc:'New data shows record growth across WBE-certified women-owned enterprises in tech, services, and construction sectors.',date:new Date().toISOString(),source:'NWBC',image:null,tags:['wbe','women','policy']},
+    {title:'DBE Program Opens New Federal Construction Contracts for Minority Firms',link:'https://www.mbda.gov',desc:'The Disadvantaged Business Enterprise program is helping minority-owned construction and engineering companies win record federal contracts.',date:new Date().toISOString(),source:'MBDA.gov',image:null,tags:['dbe','mbe','policy']},
+    {title:'Veteran-Owned Business Owners Secure Landmark Federal Procurement Victory',link:'https://www.sba.gov',desc:'VOB-certified veteran entrepreneurs secured a significant new set-aside program through the VA procurement office, opening $500M in contracts.',date:new Date().toISOString(),source:'SBA.gov',image:null,tags:['vob','funding','policy']},
+    {title:'LGBTQ+ Business Owners Report Record Revenue Growth in 2026',link:'https://www.nglcc.org',desc:'The National LGBT Chamber of Commerce reports that LGBTQ+-owned businesses are seeing historic growth driven by corporate supplier diversity programs.',date:new Date().toISOString(),source:'NGLCC',image:null,tags:['lgbtq','dei']},
+    {title:'Corporate DE&I Commitments Drive $2B in Minority Supplier Contracts',link:'https://www.mbda.gov',desc:'Major corporations fulfilled diversity, equity and inclusion supplier commitments, directing $2 billion toward certified minority and women-owned businesses.',date:new Date().toISOString(),source:'MBDA.gov',image:null,tags:['dei','mbe','wbe','dbe']},
+    {title:'Latina-Owned Businesses Lead Nation in Small Business Growth',link:'https://www.latinastyle.com',desc:'A new report highlights the continued economic impact and record expansion of Latina entrepreneurs across all 50 states.',date:new Date().toISOString(),source:'Latina Style',image:null,tags:['latina','wbe','dei']},
+    {title:'AAPI Business Grant Applications Open — $50M Available This Cycle',link:'https://www.mbda.gov',desc:'The Minority Business Development Agency has opened applications for its AAPI business development grant program with $50M available to eligible MBE firms.',date:new Date().toISOString(),source:'MBDA.gov',image:null,tags:['aapi','mbe','funding']},
+  ];
+
+  ALL = FB;
+  renderTicker(FB);
+  renderHero(FB);
+  renderGrid(FB);
+  renderPolicy(FB);
+  updateCounts(FB);
+  document.getElementById('sb-count').textContent = 'Sample content (feeds offline)';
+  document.getElementById('sb-sources').textContent = '— connect to internet for live news';
+}
+
+function reload() {
+  ALL = [];
+  document.getElementById('notify').className = 'notify';
+  document.getElementById('sb-count').textContent = 'Refreshing...';
+  load();
+}
+
+// ─── MODAL ──────────────────────────────────────────────────────────────────
+function openModal(t) { document.getElementById('modal').classList.add('on'); m_tab(t, document.querySelectorAll('.mtab')[t==='login'?1:0]); }
+function closeModal()  { document.getElementById('modal').classList.remove('on'); }
+function modal_out(e)  { if (e.target === document.getElementById('modal')) closeModal(); }
+function m_tab(t, el) {
+  document.querySelectorAll('.mtab').forEach(x => x.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('mf-sub').style.display   = t === 'sub'   ? 'flex' : 'none';
+  document.getElementById('mf-login').style.display = t === 'login' ? 'flex' : 'none';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ─── BOOT ────────────────────────────────────────────────────────────────────
+load();
+</script>
+</body>
+</html>
