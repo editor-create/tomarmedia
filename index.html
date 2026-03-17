@@ -469,30 +469,7 @@ function getDate(){
 
 async function fetchNews(category){
   const fallback = FALLBACK_ARTICLES[category] || FALLBACK_ARTICLES.all;
-  const feeds = RSS_FEEDS[category] || RSS_FEEDS.all;
-  let articles = [...fallback];
-  
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-    const feed = feeds[0];
-    const res = await fetch(`${RSS2JSON}${encodeURIComponent(feed)}&count=10`, {signal: controller.signal});
-    clearTimeout(timeout);
-    const data = await res.json();
-    if(data.status==='ok' && data.items && data.items.length > 0){
-      const live = data.items.map(item=>({
-        title: item.title,
-        description: item.description ? item.description.replace(/<[^>]+>/g,'').slice(0,200) : '',
-        url: item.link,
-        source: {name: data.feed.title || 'News'},
-        publishedAt: item.pubDate || new Date().toISOString(),
-        urlToImage: item.thumbnail || item.enclosure?.link || ''
-      }));
-      articles = [...live, ...fallback];
-    }
-  } catch(e){}
-  
-  return articles;
+  return fallback;
 }
 
 function timeAgo(dateStr){
