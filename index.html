@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -468,10 +467,36 @@ function getDate(){
   return new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 }
 
-async function fetchNews(category){
-  const fallback = FALLBACK_ARTICLES[category] || FALLBACK_ARTICLES.all;
-  return fallback;
+function fetchNews(category){
+  return FALLBACK_ARTICLES[category] || FALLBACK_ARTICLES.all;
 }
+
+function filterNews(category, tabEl){
+  currentCategory = category;
+  if(tabEl){
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+  }
+  document.querySelectorAll('.community-pill').forEach(p => p.classList.remove('active'));
+
+  const articles = fetchNews(category);
+  allArticles = articles;
+
+  renderHero(articles[0], category);
+  renderStoryGrid(articles.slice(1), category);
+  renderSidebar(articles, category);
+  updateTicker(articles);
+  updateBreaking(articles);
+}
+
+function loadAll(){
+  document.getElementById('current-date').textContent = getDate();
+  filterNews('all', null);
+  renderPolicyGrid(fetchNews('policy'));
+  renderFundingGrid(fetchNews('funding'));
+}
+
+loadAll();
 
 function timeAgo(dateStr){
   const diff = (Date.now() - new Date(dateStr)) / 1000;
@@ -581,27 +606,6 @@ function updateBreaking(articles){
   document.getElementById('breaking-text').textContent = articles[0].title;
 }
 
-async function filterNews(category, tabEl){
-  currentCategory = category;
-  if(tabEl){
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    tabEl.classList.add('active');
-  }
-  document.querySelectorAll('.community-pill').forEach(p => p.classList.remove('active'));
-  document.getElementById('hero-section').innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading top story...</div>';
-  document.getElementById('story-grid').innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="loading-spinner"></div>Loading stories...</div>';
-  document.getElementById('sidebar-stories').innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
-
-  const articles = await fetchNews(category);
-  allArticles = articles;
-
-  renderHero(articles[0], category);
-  renderStoryGrid(articles.slice(1), category);
-  renderSidebar(articles, category);
-  updateTicker(articles);
-  updateBreaking(articles);
-}
-
 function searchNews(val){
   if(!val.trim()) return;
   const filtered = allArticles.filter(a =>
@@ -615,13 +619,27 @@ function searchNews(val){
   }
 }
 
-async function loadAll(){
+function filterNews(category, tabEl){
+  currentCategory = category;
+  if(tabEl){
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+  }
+  document.querySelectorAll('.community-pill').forEach(p => p.classList.remove('active'));
+  const articles = FALLBACK_ARTICLES[category] || FALLBACK_ARTICLES.all;
+  allArticles = articles;
+  renderHero(articles[0], category);
+  renderStoryGrid(articles.slice(1), category);
+  renderSidebar(articles, category);
+  updateTicker(articles);
+  updateBreaking(articles);
+}
+
+function loadAll(){
   document.getElementById('current-date').textContent = getDate();
   filterNews('all', null);
-  const policyArticles = await fetchNews('policy');
-  renderPolicyGrid(policyArticles);
-  const fundingArticles = await fetchNews('funding');
-  renderFundingGrid(fundingArticles);
+  renderPolicyGrid(FALLBACK_ARTICLES.policy);
+  renderFundingGrid(FALLBACK_ARTICLES.funding);
 }
 
 loadAll();
