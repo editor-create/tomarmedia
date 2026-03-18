@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src *;">
+<title>Tomar Media — Empowering Diverse Businesses in AEC</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #FF6B35;
+  --orange-dark: #E85520;
+  --orange-light: #FF8C5A;
+  --black: #0D0D0D;
+  --white: #FFFFFF;
+  --gray-50: #F9F9F9;
+  --gray-100: #F2F2F2;
+  --gray-200: #E5E5E5;
+  --gray-400: #999999;
+  --gray-600: #555555;
+  --gray-800: #222222;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Barlow',sans-serif;background:#fff;color:var(--black);line-height:1.5}
+a{text-decoration:none;color:inherit}
+
+/* TICKER */
+.ticker{background:var(--black);color:var(--white);padding:8px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:ticker 40s linear infinite}
+.ticker-inner span{margin:0 48px;font-size:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px}
+.ticker-inner span::before{content:'◆ ';color:var(--orange)}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* HEADER */
+header{background:var(--orange);padding:0}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:32px 40px;border-bottom:1px solid rgba(255,255,255,0.2)}
+.date-line{font-size:14px;color:#fff;letter-spacing:1px;text-transform:uppercase;font-weight:600;font-family:'Barlow Condensed',sans-serif}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;color:#fff;letter-spacing:4px;line-height:1}
+.logo span{display:block;font-size:13px;font-weight:600;letter-spacing:4px;color:#fff;margin-top:10px;text-transform:uppercase;white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:12px}
+.btn-subscribe{background:#fff;color:var(--orange);padding:10px 24px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;border:none;cursor:pointer;text-transform:uppercase}
+.btn-signin{background:transparent;color:#fff;padding:10px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:1px;border:2px solid rgba(255,255,255,0.5);cursor:pointer;text-transform:uppercase}
+.btn-signin:hover{border-color:#fff}
+.date-line{font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase}
+
+/* NAV */
+nav{background:#fff;border-bottom:3px solid var(--orange);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.nav-inner{display:flex;align-items:center;padding:0 40px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{padding:14px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-600);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;white-space:nowrap;transition:all 0.2s;position:relative}
+.nav-tab:hover{color:var(--orange)}
+.nav-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+
+/* DROPDOWN */
+.nav-item{position:relative;display:inline-block}
+.nav-item:hover .dropdown{display:block}
+.dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--gray-200);border-top:3px solid var(--orange);min-width:220px;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.dropdown-item{display:block;padding:11px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-600);cursor:pointer;border-bottom:1px solid var(--gray-100);transition:all 0.2s}
+.dropdown-item:last-child{border-bottom:none}
+.dropdown-item:hover{background:var(--gray-50);color:var(--orange)}
+.nav-tab .caret{font-size:9px;margin-left:4px;opacity:0.6}
+
+/* RSS FEED PANEL */
+.rss-panel{display:none;background:var(--gray-50);border-bottom:3px solid var(--orange)}
+.rss-panel.active{display:block}
+.rss-panel-inner{max-width:1280px;margin:0 auto;padding:32px 40px}
+.rss-panel-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--black);margin-bottom:6px}
+.rss-panel-subtitle{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.rss-categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.rss-cat-btn{padding:7px 16px;border:2px solid var(--gray-200);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;background:#fff;transition:all 0.2s;color:var(--gray-600)}
+.rss-cat-btn:hover,.rss-cat-btn.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.rss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rss-item{background:#fff;border:1px solid var(--gray-200);padding:16px;cursor:pointer;transition:border-color 0.2s}
+.rss-item:hover{border-color:var(--orange)}
+.rss-item-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.rss-item-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;line-height:1.2;color:var(--black);margin-bottom:6px}
+.rss-item:hover .rss-item-title{color:var(--orange)}
+.rss-item-desc{font-size:12px;color:var(--gray-600);line-height:1.5;margin-bottom:8px}
+.rss-item-meta{font-size:11px;color:var(--gray-400);font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.rss-loading{grid-column:1/-1;text-align:center;padding:40px;color:var(--gray-400)}
+
+/* NAV SEARCH */
+.nav-search{margin-left:auto;display:flex;align-items:center;gap:8px;padding:8px 0}
+.nav-search input{border:1px solid var(--gray-200);padding:7px 14px;font-size:13px;font-family:'Barlow',sans-serif;outline:none;width:200px}
+.nav-search input:focus{border-color:var(--orange)}
+
+/* BREAKING BANNER */
+.breaking{background:var(--black);color:#fff;padding:12px 40px;display:flex;align-items:center;gap:16px}
+.breaking-label{background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;letter-spacing:2px;padding:4px 10px;text-transform:uppercase;white-space:nowrap}
+.breaking-text{font-size:13px;font-weight:500;opacity:0.9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* MAIN LAYOUT */
+.container{max-width:1280px;margin:0 auto;padding:0 40px}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:40px;padding:40px 0}
+
+/* HERO */
+.hero-story{cursor:pointer}
+.hero-category{display:inline-block;background:var(--orange);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;padding:4px 10px;text-transform:uppercase;margin-bottom:12px}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;line-height:1.05;color:var(--black);margin-bottom:12px;letter-spacing:-0.5px}
+.hero-title:hover{color:var(--orange)}
+.hero-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--gray-400);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.hero-meta .source{color:var(--orange);font-weight:700}
+.hero-excerpt{font-size:16px;color:var(--gray-600);line-height:1.7;max-width:600px}
+.hero-divider{border:none;border-top:1px solid var(--gray-200);margin:32px 0}
+
+/* STORY GRID */
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.story-card{cursor:pointer;padding-bottom:24px;border-bottom:1px solid var(--gray-200)}
+.story-card:hover .story-title{color:var(--orange)}
+.story-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--gray-200);line-height:1;margin-bottom:8px}
+.story-tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.story-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;line-height:1.2;color:var(--black);margin-bottom:8px;transition:color 0.2s}
+.story-meta{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+
+/* SIDEBAR */
+.sidebar{}
+.sidebar-section{margin-bottom:32px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray-400);padding-bottom:10px;border-bottom:2px solid var(--black);margin-bottom:16px}
+.sidebar-story{padding:14px 0;border-bottom:1px solid var(--gray-100);cursor:pointer}
+.sidebar-story:last-child{border-bottom:none}
+.sidebar-story:hover .sidebar-story-title{color:var(--orange)}
+.sidebar-story-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.sidebar-story-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;line-height:1.25;color:var(--black);transition:color 0.2s}
+.sidebar-story-meta{font-size:11px;color:var(--gray-400);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px}
+
+/* FUNDING CARDS */
+.funding-card{background:var(--gray-50);border-left:3px solid var(--orange);padding:14px 16px;margin-bottom:10px;cursor:pointer}
+.funding-card:hover{background:#fff5f2}
+.funding-amount{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--orange);line-height:1}
+.funding-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--black);margin:4px 0 2px}
+.funding-meta{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;font-family:'Barlow Condensed',sans-serif}
+.funding-badge{display:inline-block;font-size:10px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;margin-top:6px;background:var(--orange);color:#fff}
+
+/* NEWSLETTER CTA */
+.newsletter-cta{background:var(--black);padding:24px;margin-top:8px}
+.newsletter-cta h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.1}
+.newsletter-cta p{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:16px}
+.newsletter-cta input{width:100%;padding:10px 14px;border:none;font-size:13px;font-family:'Barlow',sans-serif;background:#fff;margin-bottom:8px;outline:none}
+.newsletter-cta button{width:100%;background:var(--orange);color:#fff;border:none;padding:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.newsletter-cta button:hover{background:var(--orange-dark)}
+
+/* SECOND SECTION */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin:48px 0 24px;border-top:3px solid var(--black);padding-top:16px}
+.section-header h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;letter-spacing:-0.5px;text-transform:uppercase}
+.section-header a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
+.section-header a:hover{text-decoration:underline}
+
+/* COMMUNITY PILLS */
+.community-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.community-pill{padding:10px 20px;border:2px solid var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.community-pill:hover,.community-pill.active{background:var(--orange);border-color:var(--orange);color:#fff}
+
+/* POLICY / LEGAL GRID */
+.two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.article-card{border:1px solid var(--gray-200);padding:20px;cursor:pointer;transition:border-color 0.2s}
+.article-card:hover{border-color:var(--orange)}
+.article-card-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.article-card-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;line-height:1.2;color:var(--black);margin-bottom:8px}
+.article-card:hover .article-card-title{color:var(--orange)}
+.article-card-excerpt{font-size:13px;color:var(--gray-600);line-height:1.6}
+.article-card-meta{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;font-family:'Barlow Condensed',sans-serif;margin-top:12px}
+
+/* LOADING STATE */
+.loading{text-align:center;padding:60px 20px;color:var(--gray-400)}
+.loading-spinner{width:32px;height:32px;border:3px solid var(--gray-200);border-top-color:var(--orange);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FOOTER */
+footer{background:var(--black);color:#fff;padding:48px 0 24px;margin-top:64px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand .logo{color:#fff;margin-bottom:12px;display:block}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:260px}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px;transition:color 0.2s}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);margin-left:16px}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6)}
+
+/* STATUS */
+.status-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-top{padding:12px 20px}
+  .logo{font-size:28px}
+  .container{padding:0 20px}
+  .main-grid{grid-template-columns:1fr}
+  .story-grid{grid-template-columns:1fr}
+  .two-col-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:32px}
+  .nav-inner{padding:0 20px}
+  .rss-grid{grid-template-columns:1fr}
+  .rss-panel-inner{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker-text">
+    <span>Loading live updates...</span>
+    <span>Loading live updates...</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div>
+      <div class="logo">TOMAR MEDIA<span>Empowering Diverse Businesses in Architecture, Engineering & Construction</span></div>
+    </div>
+    <div class="header-actions">
+      <div>
+        <div class="date-line" id="current-date"></div>
+        <div class="status-badge" style="margin-top:4px"><span class="status-dot"></span> Live</div>
+      </div>
+      <button class="btn-signin">Sign In</button>
+      <button class="btn-subscribe">Subscribe Free</button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="filterNews('all',this);closeRSS()">All</div>
+    <div class="nav-tab" onclick="filterNews('wbe',this);closeRSS()">WBE</div>
+
+    <!-- MBE with dropdown -->
+    <div class="nav-item">
+      <div class="nav-tab" onclick="filterNews('mbe',this);closeRSS()">MBE <span class="caret">▾</span></div>
+      <div class="dropdown">
+        <div class="dropdown-item" onclick="filterNews('mbe_black',this);closeRSS()">Black / African American</div>
+        <div class="dropdown-item" onclick="filterNews('mbe_hispanic',this);closeRSS()">Hispanic / Latino</div>
+        <div class="dropdown-item" onclick="filterNews('mbe_asian',this);closeRSS()">Asian American</div>
+        <div class="dropdown-item" onclick="filterNews('mbe_native',this);closeRSS()">Native American / Alaska Native</div>
+        <div class="dropdown-item" onclick="filterNews('mbe_pacific',this);closeRSS()">Native Hawaiian / Pacific Islander</div>
+      </div>
+    </div>
+
+    <div class="nav-tab" onclick="filterNews('dbe',this);closeRSS()">DBE</div>
+    <div class="nav-tab" onclick="filterNews('vob',this);closeRSS()">VOB</div>
+    <div class="nav-tab" onclick="filterNews('lgbtq',this);closeRSS()">LGBTQ+</div>
+    <div class="nav-tab" onclick="filterNews('dei',this);closeRSS()">DE&amp;I</div>
+    <div class="nav-tab" onclick="filterNews('aec',this);closeRSS()">AEC News</div>
+    <div class="nav-tab" onclick="filterNews('federal',this);closeRSS()">Federal Contracts</div>
+    <div class="nav-tab" onclick="filterNews('funding',this);closeRSS()">Funding</div>
+    <div class="nav-tab" onclick="filterNews('policy',this);closeRSS()">Policy</div>
+    <div class="nav-tab" id="rss-nav-tab" onclick="toggleRSS(this)">RSS Feed ▾</div>
+    <div class="nav-search">
+      <input type="text" placeholder="Search Tomar Media..." id="search-input" oninput="searchNews(this.value)">
+    </div>
+  </div>
+</nav>
+
+<!-- RSS PANEL -->
+<div class="rss-panel" id="rss-panel">
+  <div class="rss-panel-inner">
+    <div class="rss-panel-title">Live RSS Feeds</div>
+    <div class="rss-panel-subtitle">Real-time news from verified sources — click any story to read the full article</div>
+    <div class="rss-categories">
+      <button class="rss-cat-btn active" onclick="loadRSSCategory('aec_ny',this)">AEC · NY &amp; NJ</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('aec_northeast',this)">AEC · Northeast Projects</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('sba_mbda',this)">SBA / MBDA / Black Enterprise</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('mwbe',this)">MWBE Contracts</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('supplier_diversity',this)">Supplier Diversity</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('women_founders',this)">Women Founders</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('minority_grants',this)">Minority Grants</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('lgbtq_biz',this)">LGBTQ+ Business</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('dei_policy',this)">DEI &amp; Corporate Policy</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('federal_contracts',this)">Federal Contracts</button>
+      <button class="rss-cat-btn" onclick="loadRSSCategory('certifications',this)">Certification News</button>
+    </div>
+    <div class="rss-grid" id="rss-feed-grid">
+      <div class="rss-loading"><div class="loading-spinner"></div>Loading feeds...</div>
+    </div>
+  </div>
+</div>
+
+<!-- BREAKING -->
+<div class="breaking">
+  <span class="breaking-label">Breaking</span>
+  <span class="breaking-text" id="breaking-text">Loading latest news...</span>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+  <div class="main-grid">
+
+    <!-- LEFT: NEWS -->
+    <div>
+      <!-- HERO -->
+      <div style="padding-top:32px">
+        <div id="hero-section">
+          <div class="loading"><div class="loading-spinner"></div>Loading top story...</div>
+        </div>
+        <hr class="hero-divider">
+        <div class="story-grid" id="story-grid">
+          <div class="loading" style="grid-column:1/-1"><div class="loading-spinner"></div>Loading stories...</div>
+        </div>
+      </div>
+
+      <!-- COMMUNITY SECTION -->
+      <div class="section-header">
+        <h2>Browse by Community</h2>
+        <a href="#">View all →</a>
+      </div>
+      <div class="community-row">
+        <div class="community-pill active" onclick="filterNews('all',null)">All Communities</div>
+        <div class="community-pill" onclick="filterNews('wbe',null)">WBE — Women-Owned</div>
+        <div class="community-pill" onclick="filterNews('mbe',null)">MBE — Minority-Owned</div>
+        <div class="community-pill" onclick="filterNews('mbe_black',null)">Black / African American</div>
+        <div class="community-pill" onclick="filterNews('mbe_hispanic',null)">Hispanic / Latino</div>
+        <div class="community-pill" onclick="filterNews('mbe_asian',null)">Asian American</div>
+        <div class="community-pill" onclick="filterNews('mbe_native',null)">Native American</div>
+        <div class="community-pill" onclick="filterNews('mbe_pacific',null)">Pacific Islander</div>
+        <div class="community-pill" onclick="filterNews('dbe',null)">DBE — Disadvantaged</div>
+        <div class="community-pill" onclick="filterNews('vob',null)">VOB — Veteran-Owned</div>
+        <div class="community-pill" onclick="filterNews('lgbtq',null)">LGBTQ+</div>
+        <div class="community-pill" onclick="filterNews('dei',null)">DE&amp;I</div>
+      </div>
+
+      <!-- POLICY & LEGAL -->
+      <div class="section-header">
+        <h2>Policy &amp; Legal</h2>
+        <a href="#">All policy →</a>
+      </div>
+      <div class="two-col-grid" id="policy-grid">
+        <div class="loading" style="grid-column:1/-1"><div class="loading-spinner"></div>Loading policy news...</div>
+      </div>
+
+      <!-- FUNDING -->
+      <div class="section-header">
+        <h2>Active Funding Opportunities</h2>
+        <a href="#">View all funding →</a>
+      </div>
+      <div class="two-col-grid" id="funding-grid">
+        <div class="loading" style="grid-column:1/-1"><div class="loading-spinner"></div>Loading funding news...</div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div style="padding-top:32px">
+
+        <!-- TOP STORIES SIDEBAR -->
+        <div class="sidebar-section">
+          <div class="sidebar-title">Today's Top Stories</div>
+          <div id="sidebar-stories">
+            <div class="loading"><div class="loading-spinner"></div></div>
+          </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="newsletter-cta">
+          <h3>Daily Briefing for Diverse AEC Business Owners</h3>
+          <p>Funding alerts, federal contracts, policy changes — delivered every morning. Free forever.</p>
+          <input type="email" placeholder="your@email.com">
+          <button>Subscribe Free →</button>
+        </div>
+
+        <!-- FUNDING SIDEBAR -->
+        <div class="sidebar-section" style="margin-top:32px">
+          <div class="sidebar-title">Funding Spotlight</div>
+          <div id="funding-sidebar">
+            <div class="funding-card">
+              <div class="funding-amount">$500M</div>
+              <div class="funding-title">SBA Minority Business Loans</div>
+              <div class="funding-meta">Open Now · SBA.gov</div>
+              <span class="funding-badge">MBE</span>
+            </div>
+            <div class="funding-card">
+              <div class="funding-amount">$25M</div>
+              <div class="funding-title">Knight Foundation Media Grants</div>
+              <div class="funding-meta">Deadline Apr 15 · knightfoundation.org</div>
+              <span class="funding-badge">DE&amp;I</span>
+            </div>
+            <div class="funding-card">
+              <div class="funding-amount">$100M</div>
+              <div class="funding-title">Google Fund · Women of Color</div>
+              <div class="funding-meta">Rolling · google.com</div>
+              <span class="funding-badge">WBE</span>
+            </div>
+            <div class="funding-card">
+              <div class="funding-amount">$50M</div>
+              <div class="funding-title">MBDA Business Center Grants</div>
+              <div class="funding-meta">Ongoing · mbda.gov</div>
+              <span class="funding-badge">MBE</span>
+            </div>
+            <div class="funding-card">
+              <div class="funding-amount">$25M</div>
+              <div class="funding-title">VA Veteran Business Fund</div>
+              <div class="funding-meta">Open · va.gov</div>
+              <span class="funding-badge">VOB</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">TOMAR MEDIA</span>
+        <p>Daily news for WBE, MBE, DBE, VOB, LGBTQ+ and DE&I business owners in Architecture, Engineering & Construction across the Northeast United States.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Communities</h4>
+        <a href="#">WBE — Women-Owned</a>
+        <a href="#">MBE — Minority-Owned</a>
+        <a href="#">Black / African American</a>
+        <a href="#">Hispanic / Latino</a>
+        <a href="#">Asian American</a>
+        <a href="#">Native American</a>
+        <a href="#">Pacific Islander</a>
+        <a href="#">DBE — Disadvantaged</a>
+        <a href="#">VOB — Veteran-Owned</a>
+        <a href="#">LGBTQ+ Business</a>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <a href="#">Funding &amp; Grants</a>
+        <a href="#">Policy</a>
+        <a href="#">Legal</a>
+        <a href="#">AEC News</a>
+        <a href="#">DE&amp;I</a>
+        <a href="#">Federal Contracts</a>
+        <a href="#">Certifications</a>
+        <a href="#">Supplier Diversity</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Tomar Media</a>
+        <a href="#">Advertise</a>
+        <a href="#">Media Kit</a>
+        <a href="#">Contact</a>
+        <a href="#">Newsletter</a>
+        <a href="#">RSS Feeds</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Tomar Media · tomarmedia.com</span>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">DMCA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+// ─── GOOGLE NEWS RSS HELPER ───────────────────────────────────────────────────
+function gnews(phrase){
+  return `https://news.google.com/rss/search?q=${encodeURIComponent('"'+phrase+'"')}&hl=en-US&gl=US&ceid=US:en`;
+}
+
+// ─── ALL RSS FEEDS BY SECTION ─────────────────────────────────────────────────
+const RSS_FEEDS = {
+  all: [
+    'https://www.blackenterprise.com/feed/',
+    'https://www.enr.com/rss/all',
+    'https://www.bdcnetwork.com/rss.xml',
+    'https://www.sba.gov/rss/news',
+  ],
+  wbe: [
+    gnews('WBE contracts'),
+    gnews('women founders funding'),
+    'https://www.wbenc.org/news/feed/',
+    'https://www.nawbo.org/feed',
+  ],
+  mbe: [
+    gnews('MBE contracts'),
+    gnews('minority business grants'),
+    'https://www.blackenterprise.com/feed/',
+    'https://www.mbda.gov/rss.xml',
+  ],
+  mbe_black: [
+    gnews('Black business contracts'),
+    gnews('African American entrepreneur'),
+    'https://www.blackenterprise.com/feed/',
+    gnews('MWBE contracts New York'),
+  ],
+  mbe_hispanic: [
+    gnews('Hispanic business owner'),
+    gnews('Latino entrepreneur contracts'),
+    gnews('MWBE Hispanic'),
+    gnews('supplier diversity Hispanic'),
+  ],
+  mbe_asian: [
+    gnews('Asian American business owner'),
+    gnews('South Asian entrepreneur'),
+    gnews('Asian Pacific business contracts'),
+    gnews('supplier diversity Asian'),
+  ],
+  mbe_native: [
+    gnews('Native American business owner'),
+    gnews('Alaska Native enterprise'),
+    gnews('tribal business contracts'),
+    gnews('Native American entrepreneur'),
+  ],
+  mbe_pacific: [
+    gnews('Native Hawaiian business'),
+    gnews('Pacific Islander entrepreneur'),
+    gnews('NHPI business owner'),
+    gnews('Pacific Islander contracts'),
+  ],
+  dbe: [
+    gnews('DBE contracts'),
+    gnews('disadvantaged business enterprise'),
+    'https://www.transportation.gov/rss.xml',
+    'https://www.enr.com/rss/all',
+  ],
+  vob: [
+    gnews('veteran owned business contracts'),
+    gnews('VOB federal contracts'),
+    'https://www.va.gov/rss/rss_NewsReleases.aspx',
+    'https://nvbdc.org/feed/',
+  ],
+  lgbtq: [
+    gnews('LGBTQ business'),
+    gnews('LGBTQ startup'),
+    gnews('LGBTQ economy'),
+    gnews('Pride marketing'),
+    'https://www.nglcc.org/feed',
+  ],
+  dei: [
+    gnews('DEI corporate policy'),
+    gnews('supplier diversity'),
+    'https://www.shrm.org/rss/pages/rss.aspx',
+    'https://www.blackenterprise.com/feed/',
+  ],
+  aec: [
+    'https://www.enr.com/rss/all',
+    'https://www.bdcnetwork.com/rss.xml',
+    'https://www.archpaper.com/feed/',
+    gnews('architecture engineering construction New York New Jersey'),
+  ],
+  federal: [
+    gnews('federal contracts minority business'),
+    gnews('MWBE contracts'),
+    'https://www.sba.gov/rss/news',
+    'https://www.grants.gov/rss/GG_NewOppByCategory.xml',
+  ],
+  funding: [
+    'https://www.sba.gov/rss/news',
+    gnews('minority business grants'),
+    gnews('women founders funding'),
+    'https://www.grants.gov/rss/GG_NewOppByCategory.xml',
+  ],
+  policy: [
+    'https://www.sba.gov/rss/news',
+    gnews('DEI corporate policy'),
+    'https://www.transportation.gov/rss.xml',
+    gnews('supplier diversity policy'),
+  ],
+};
+
+// ─── RSS PANEL FEEDS ──────────────────────────────────────────────────────────
+const RSS_PANEL_FEEDS = {
+  aec_ny: {
+    label: 'AEC · NY & NJ',
+    feeds: [
+      'https://www.enr.com/rss/all',
+      'https://www.bdcnetwork.com/rss.xml',
+      gnews('architecture engineering construction "New York"'),
+      gnews('architecture engineering construction "New Jersey"'),
+    ]
+  },
+  aec_northeast: {
+    label: 'AEC · Northeast Projects',
+    feeds: [
+      'https://www.enr.com/rss/all',
+      gnews('architectural engineering project northeast'),
+      gnews('construction project New England'),
+      'https://www.bdcnetwork.com/rss.xml',
+    ]
+  },
+  sba_mbda: {
+    label: 'SBA / MBDA / Black Enterprise',
+    feeds: [
+      'https://www.sba.gov/rss/news',
+      'https://www.mbda.gov/rss.xml',
+      'https://www.blackenterprise.com/feed/',
+    ]
+  },
+  mwbe: {
+    label: 'MWBE Contracts',
+    feeds: [
+      gnews('MWBE contracts'),
+      gnews('minority women business enterprise'),
+      gnews('MWBE New York'),
+      gnews('MWBE New Jersey'),
+    ]
+  },
+  supplier_diversity: {
+    label: 'Supplier Diversity',
+    feeds: [
+      gnews('supplier diversity'),
+      gnews('supplier diversity program'),
+      gnews('diverse supplier certification'),
+    ]
+  },
+  women_founders: {
+    label: 'Women Founders',
+    feeds: [
+      gnews('women founders funding'),
+      gnews('WBE contracts'),
+      gnews('women entrepreneur grants'),
+    ]
+  },
+  minority_grants: {
+    label: 'Minority Grants',
+    feeds: [
+      gnews('minority business grants'),
+      'https://www.grants.gov/rss/GG_NewOppByCategory.xml',
+      'https://www.sba.gov/rss/news',
+    ]
+  },
+  lgbtq_biz: {
+    label: 'LGBTQ+ Business',
+    feeds: [
+      gnews('LGBTQ business'),
+      gnews('LGBTQ startup'),
+      gnews('LGBTQ economy'),
+      gnews('Pride marketing'),
+    ]
+  },
+  dei_policy: {
+    label: 'DEI & Corporate Policy',
+    feeds: [
+      gnews('DEI corporate policy'),
+      gnews('diversity equity inclusion business'),
+      'https://www.shrm.org/rss/pages/rss.aspx',
+    ]
+  },
+  federal_contracts: {
+    label: 'Federal Contracts',
+    feeds: [
+      gnews('federal contracts minority'),
+      gnews('8a program contracts'),
+      'https://www.sba.gov/rss/news',
+    ]
+  },
+  certifications: {
+    label: 'Certification News',
+    feeds: [
+      gnews('MBE certification'),
+      gnews('WBE certification'),
+      gnews('DBE certification'),
+      gnews('LGBTQ business certification'),
+    ]
+  },
+};
+
+// ─── FALLBACK ARTICLES ────────────────────────────────────────────────────────
+const FALLBACK_ARTICLES = {
+  all:[
+    {title:'SBA Launches $500M Minority Business Development Initiative',description:'The Small Business Administration announced a major new program targeting minority-owned businesses in architecture, engineering and construction sectors across the Northeast.',url:'https://sba.gov',source:{name:'SBA.gov'},publishedAt:new Date().toISOString(),urlToImage:'',tag:'MBE'},
+    {title:'WBENC Expands Certification Programs for Women in AEC Industry',description:'The Women\'s Business Enterprise National Council has expanded its certification pathways specifically for women-owned firms in architecture, engineering, and construction.',url:'https://wbenc.org',source:{name:'WBENC'},publishedAt:new Date(Date.now()-3600000).toISOString(),urlToImage:'',tag:'WBE'},
+    {title:'Federal DBE Goals Increased for Highway Construction Projects',description:'New federal guidelines raise Disadvantaged Business Enterprise participation goals on federally-funded highway and infrastructure projects to 12%.',url:'https://transportation.gov',source:{name:'DOT.gov'},publishedAt:new Date(Date.now()-7200000).toISOString(),urlToImage:'',tag:'DBE'},
+    {title:'Black Enterprise: Top 10 Minority-Owned Construction Firms in Northeast',description:'Annual ranking highlights the fastest growing minority-owned AEC firms in New York, New Jersey, Connecticut, Massachusetts and Pennsylvania.',url:'https://blackenterprise.com',source:{name:'Black Enterprise'},publishedAt:new Date(Date.now()-10800000).toISOString(),urlToImage:'',tag:'MBE'},
+    {title:'MBDA Announces New Business Center Grants for Minority AEC Firms',description:'The Minority Business Development Agency is accepting applications for its Business Center grant program, with priority given to architecture, engineering and construction firms.',url:'https://mbda.gov',source:{name:'MBDA.gov'},publishedAt:new Date(Date.now()-14400000).toISOString(),urlToImage:'',tag:'Funding'},
+    {title:'NYC DOT Opens $200M Contract Opportunities for Certified DBE Firms',description:'New York City Department of Transportation has released a major infrastructure contract package with mandatory DBE subcontracting requirements.',url:'https://nyc.gov',source:{name:'NYC.gov'},publishedAt:new Date(Date.now()-18000000).toISOString(),urlToImage:'',tag:'DBE'},
+    {title:'Veteran-Owned Construction Firms See Record Contract Awards in Q1 2025',description:'VOB-certified construction companies received a record number of federal contract awards in the first quarter, driven by infrastructure spending.',url:'https://va.gov',source:{name:'VA.gov'},publishedAt:new Date(Date.now()-21600000).toISOString(),urlToImage:'',tag:'VOB'},
+    {title:'New LGBTQ+ Business Certification Opens Doors in AEC Procurement',description:'NGLCC certification is increasingly being recognized by major general contractors and public agencies as a valid supplier diversity credential.',url:'https://nglcc.org',source:{name:'NGLCC'},publishedAt:new Date(Date.now()-25200000).toISOString(),urlToImage:'',tag:'LGBTQ+'},
+  ],
+  funding:[
+    {title:'SBA Opens Applications for $500M Minority Business Loan Program',description:'The Small Business Administration is accepting applications for its expanded minority business lending program targeting construction and engineering firms.',url:'https://sba.gov',source:{name:'SBA.gov'},publishedAt:new Date().toISOString(),urlToImage:'',tag:'Funding'},
+    {title:'MBDA Grant Program: $50M Available for Minority AEC Businesses',description:'Applications now open for MBDA Business Center grants supporting minority-owned architecture, engineering and construction companies.',url:'https://mbda.gov',source:{name:'MBDA.gov'},publishedAt:new Date(Date.now()-3600000).toISOString(),urlToImage:'',tag:'Funding'},
+    {title:'Knight Foundation Offers $25M in Media and Community Grants',description:'The Knight Foundation is accepting applications for its community and media innovation grants, with a focus on diverse-owned businesses.',url:'https://knightfoundation.org',source:{name:'Knight Foundation'},publishedAt:new Date(Date.now()-7200000).toISOString(),urlToImage:'',tag:'Funding'},
+    {title:'Google for Startups: $100M Fund Opens for Women of Color Entrepreneurs',description:'Google\'s diversity-focused startup fund is now accepting applications from women of color running technology-forward AEC businesses.',url:'https://google.com',source:{name:'Google'},publishedAt:new Date(Date.now()-10800000).toISOString(),urlToImage:'',tag:'WBE'},
+  ],
+  policy:[
+    {title:'SBA Proposes New Rules to Expand 8(a) Business Development Program',description:'Proposed rule changes would expand eligibility and increase contract limits for the SBA\'s flagship minority business development program.',url:'https://sba.gov',source:{name:'SBA.gov'},publishedAt:new Date().toISOString(),urlToImage:'',tag:'Policy'},
+    {title:'New York State Raises MWBE Goals to 30% on State Contracts',description:'New York State has raised its Minority and Women Business Enterprise participation goals to 30% on all state-funded construction contracts.',url:'https://esd.ny.gov',source:{name:'Empire State Development'},publishedAt:new Date(Date.now()-3600000).toISOString(),urlToImage:'',tag:'Policy'},
+    {title:'NJ Legislature Passes Landmark Supplier Diversity Act',description:'New Jersey\'s new Supplier Diversity Act requires all state agencies to set and report on MWBE and LGBTQ+ business enterprise spending goals.',url:'https://nj.gov',source:{name:'NJ.gov'},publishedAt:new Date(Date.now()-7200000).toISOString(),urlToImage:'',tag:'Policy'},
+    {title:'DEI Policy Shifts Drive New Corporate Supplier Diversity Commitments',description:'Major corporations are retooling supplier diversity programs in response to evolving DEI policy landscapes at the federal and state level.',url:'https://shrm.org',source:{name:'SHRM'},publishedAt:new Date(Date.now()-10800000).toISOString(),urlToImage:'',tag:'Policy'},
+  ]
+};
+
+let allArticles = [];
+let currentCategory = 'all';
+let currentRSSCategory = 'aec_ny';
+let rssPanelOpen = false;
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+function getDate(){
+  return new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+}
+
+function timeAgo(dateStr){
+  const diff = (Date.now() - new Date(dateStr)) / 1000;
+  if(diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if(diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return Math.floor(diff/86400) + 'd ago';
+}
+
+function getTag(article, category){
+  if(article.tag) return article.tag;
+  const tags = {
+    wbe:'WBE', mbe:'MBE', mbe_black:'MBE · Black', mbe_hispanic:'MBE · Hispanic',
+    mbe_asian:'MBE · Asian', mbe_native:'MBE · Native American', mbe_pacific:'MBE · Pacific Islander',
+    dbe:'DBE', vob:'VOB', lgbtq:'LGBTQ+', dei:'DE&I', funding:'Funding',
+    policy:'Policy', legal:'Legal', aec:'AEC', federal:'Federal'
+  };
+  if(category !== 'all') return tags[category] || 'AEC';
+  const t = (article.title||'').toLowerCase();
+  if(t.includes('women') || t.includes('wbe')) return 'WBE';
+  if(t.includes('black') || t.includes('african american')) return 'MBE · Black';
+  if(t.includes('hispanic') || t.includes('latino')) return 'MBE · Hispanic';
+  if(t.includes('asian')) return 'MBE · Asian';
+  if(t.includes('native american') || t.includes('alaska native')) return 'MBE · Native';
+  if(t.includes('pacific islander') || t.includes('hawaiian')) return 'MBE · Pacific';
+  if(t.includes('minority') || t.includes('mbe')) return 'MBE';
+  if(t.includes('veteran') || t.includes('vob')) return 'VOB';
+  if(t.includes('dbe') || t.includes('disadvantaged')) return 'DBE';
+  if(t.includes('lgbtq') || t.includes('lgbt') || t.includes('pride')) return 'LGBTQ+';
+  if(t.includes('grant') || t.includes('fund')) return 'Funding';
+  if(t.includes('policy') || t.includes('federal')) return 'Policy';
+  if(t.includes('certif')) return 'Certification';
+  if(t.includes('supplier diversity')) return 'Diversity';
+  return 'AEC';
+}
+
+// ─── IMAGE HELPERS ────────────────────────────────────────────────────────────
+
+const TAG_COLORS = {
+  'WBE':'#7C3AED','MBE':'#FF6B35','MBE · Black':'#111827',
+  'MBE · Hispanic':'#DC2626','MBE · Asian':'#0369A1',
+  'MBE · Native':'#92400E','DBE':'#065F46','VOB':'#1D4ED8',
+  'LGBTQ+':'#DB2777','DE&I':'#6D28D9','Funding':'#047857',
+  'Policy':'#374151','AEC':'#B45309','Federal':'#1E3A5F',
+  'Certification':'#7C3AED','Diversity':'#0F766E','default':'#FF6B35'
+};
+
+// Picsum IDs mapped by category
+const TAG_PICSUM = {
+  'WBE':[1036,1067,835],'MBE':[1080,1043,1060],
+  'MBE · Black':[1043,1080,1060],'MBE · Hispanic':[1060,1080,1043],
+  'MBE · Asian':[1036,1043,1060],'MBE · Native':[1080,1036,1043],
+  'DBE':[1048,1054,1076],'VOB':[1074,1048,1054],
+  'LGBTQ+':[1067,1036,1060],'DE&I':[1043,1067,1036],
+  'Funding':[1070,1072,1015],'Policy':[1015,1074,1048],
+  'AEC':[1048,1054,1076],'Federal':[1015,1074,1048],
+  'Certification':[1072,1070,1015],'Diversity':[1067,1043,1036],
+  'default':[1080,1048,1060]
+};
+
+function simpleHash(str){
+  let h=0; for(let i=0;i<(str||'').length;i++) h=((h<<5)-h)+str.charCodeAt(i); return Math.abs(h);
+}
+
+function makePlaceholderDiv(tag, height){
+  const color = TAG_COLORS[tag] || TAG_COLORS['default'];
+  const label = (tag||'AEC').replace(/</g,'&lt;');
+  const fs = Math.round(height * 0.6);
+  return '<div style="width:100%;height:' + height + 'px;'
+    + 'background:linear-gradient(140deg,' + color + ' 60%,' + shadeColor(color,-25) + ' 100%);'
+    + 'display:flex;flex-direction:column;align-items:center;justify-content:center;'
+    + 'margin-bottom:12px;position:relative;overflow:hidden;">'
+    + '<span style="font-size:' + fs + 'px;font-weight:900;font-family:Barlow Condensed,sans-serif;'
+    + 'color:rgba(255,255,255,0.12);line-height:1;letter-spacing:-3px;position:absolute;'
+    + 'bottom:-10px;right:-5px;">' + label.charAt(0) + '</span>'
+    + '<span style="font-family:Barlow Condensed,sans-serif;font-size:' + Math.round(height*0.11) + 'px;'
+    + 'font-weight:900;letter-spacing:4px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:6px;">TOMAR MEDIA</span>'
+    + '<span style="font-family:Barlow Condensed,sans-serif;font-size:' + Math.round(height*0.14) + 'px;'
+    + 'font-weight:700;letter-spacing:3px;color:#fff;text-transform:uppercase;">' + label + '</span>'
+    + '</div>';
+}
+
+function shadeColor(hex, pct){
+  const n=parseInt(hex.slice(1),16),r=Math.min(255,Math.max(0,(n>>16)+pct)),
+    g=Math.min(255,Math.max(0,((n>>8)&0xff)+pct)),b=Math.min(255,Math.max(0,(n&0xff)+pct));
+  return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+
+function imgOrPlaceholder(src, tag, height, titleSeed){
+  const pool = TAG_PICSUM[tag] || TAG_PICSUM['default'];
+  const picsumId = pool[simpleHash(titleSeed||tag) % pool.length];
+  const picsumUrl = 'https://picsum.photos/id/' + picsumId + '/800/' + (height*2);
+  // Primary: RSS image. First fallback: Picsum. Second fallback: CSS placeholder div
+  const useSrc = src || picsumUrl;
+  const ph = makePlaceholderDiv(tag, height);
+  const esc = ph.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  return '<img src="' + useSrc + '" alt="" '
+    + 'style="width:100%;height:' + height + 'px;object-fit:cover;display:block;margin-bottom:12px;" '
+    + 'onerror="if(!this.dataset.t1 && this.src.indexOf(\'picsum\')<0){'
+    +   'this.dataset.t1=1;this.src=\'' + picsumUrl + '\''
+    + '}else if(!this.dataset.t2){'
+    +   'this.dataset.t2=1;this.outerHTML=\'' + esc + '\''
+    + '}">';
+}
+
+// No external OG fetching needed
+const _ogCache = {};
+async function fetchOGImage(){ return null; }
+
+// ─── FETCH RSS ────────────────────────────────────────────────────────────────
+async function fetchFeed(feedUrl){
+  try{
+    const res = await fetch(`${RSS2JSON}${encodeURIComponent(feedUrl)}&count=8&api_key=`);
+    const data = await res.json();
+    if(data.status==='ok' && data.items){
+      return data.items.map(item=>{
+        // Mine every possible image field RSS2JSON returns
+        const img = item.thumbnail
+          || (item.enclosure && item.enclosure.link && item.enclosure.type && item.enclosure.type.startsWith('image') ? item.enclosure.link : '')
+          || extractImgFromHTML(item.content || '')
+          || extractImgFromHTML(item.description || '')
+          || '';
+        // Strip HTML from description AFTER extracting image
+        const desc = (item.description||'').replace(/<[^>]+>/g,'').trim().slice(0,200);
+        return {
+          title: item.title,
+          description: desc,
+          url: item.link,
+          source: {name: data.feed.title || 'News'},
+          publishedAt: item.pubDate || new Date().toISOString(),
+          urlToImage: img
+        };
+      });
+    }
+  } catch(e){}
+  return [];
+}
+
+// Pull first <img src="..."> out of an HTML string
+function extractImgFromHTML(html){
+  if(!html) return '';
+  const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return (m && m[1] && !m[1].includes('pixel') && !m[1].includes('1x1') && !m[1].includes('spacer')) ? m[1] : '';
+}
+
+async function fetchNews(category){
+  const feeds = RSS_FEEDS[category] || RSS_FEEDS.all;
+  let articles = [];
+  const promises = feeds.slice(0,3).map(f => fetchFeed(f));
+  const results = await Promise.allSettled(promises);
+  results.forEach(r => { if(r.status==='fulfilled') articles = articles.concat(r.value); });
+  return articles.length > 0 ? articles : (FALLBACK_ARTICLES[category] || FALLBACK_ARTICLES.all);
+}
+
+// ─── RENDER FUNCTIONS ─────────────────────────────────────────────────────────
+async function renderHero(article, category){
+  if(!article) return;
+  const tag = getTag(article, category);
+  // Show immediately with RSS image or placeholder
+  const heroImg = imgOrPlaceholder(article.urlToImage || '', tag, 260, article.title);
+  document.getElementById('hero-section').innerHTML =
+    `<div class='hero-story' onclick="window.open('${article.url}','_blank')">
+      ${heroImg}
+      <span class='hero-category'>${tag}</span>
+      <h1 class='hero-title'>${article.title}</h1>
+      <div class='hero-meta'>
+        <span class='source'>${article.source.name}</span>
+        <span>·</span>
+        <span>${timeAgo(article.publishedAt)}</span>
+      </div>
+      <p class='hero-excerpt'>${article.description || ''}</p>
+    </div>`;
+  // Async upgrade: try Microlink if no RSS image
+  if(!article.urlToImage){
+    const og = await fetchOGImage(article.url);
+    if(og){
+      const el = document.querySelector('#hero-section img');
+      if(!el){
+        // Replace placeholder div with real image
+        const ph = document.querySelector('#hero-section div.hero-story > div');
+        if(ph){ const img = document.createElement('img'); img.src=og; img.alt=''; img.style.cssText='width:100%;height:260px;object-fit:cover;display:block;margin-bottom:12px'; ph.replaceWith(img); }
+      }
+    }
+  }
+}
+
+async function renderStoryGrid(articles, category){
+  if(!articles.length){
+    document.getElementById('story-grid').innerHTML = '<p style="color:#999;grid-column:1/-1;padding:20px 0">No stories found for this category.</p>';
+    return;
+  }
+  const subset = articles.slice(0,6);
+  document.getElementById('story-grid').innerHTML = subset.map((a,i) => {
+    const tag = getTag(a, category);
+    return `<div class='story-card' onclick="window.open('${a.url}','_blank')" data-idx='${i}'>
+      ${imgOrPlaceholder(a.urlToImage || '', tag, 160, a.title)}
+      <div class='story-num'>0${i+1}</div>
+      <div class='story-tag'>${tag}</div>
+      <div class='story-title'>${a.title}</div>
+      <div class='story-meta'>${a.source.name} · ${timeAgo(a.publishedAt)}</div>
+    </div>`;
+  }).join('');
+  // Async upgrade cards with no RSS image
+  subset.forEach(async (a, i) => {
+    if(!a.urlToImage){
+      const og = await fetchOGImage(a.url);
+      if(og){
+        const card = document.querySelector('.story-card[data-idx="' + i + '"]');
+        if(card){
+          const ph = card.querySelector('div[style*="background:"]');
+          if(ph){ const img = document.createElement('img'); img.src=og; img.alt=''; img.style.cssText='width:100%;height:160px;object-fit:cover;display:block;margin-bottom:12px'; ph.replaceWith(img); }
+        }
+      }
+    }
+  });
+}
+
+function renderSidebar(articles, category){
+  if(!articles.length){
+    document.getElementById('sidebar-stories').innerHTML = '<p style="color:#999;font-size:13px">No stories available.</p>';
+    return;
+  }
+  document.getElementById('sidebar-stories').innerHTML = articles.slice(0,6).map(a => `
+    <div class="sidebar-story" onclick="window.open('${a.url}','_blank')">
+      <div class="sidebar-story-tag">${getTag(a,category)}</div>
+      <div class="sidebar-story-title">${a.title}</div>
+      <div class="sidebar-story-meta">${a.source.name} · ${timeAgo(a.publishedAt)}</div>
+    </div>`).join('');
+}
+
+async function renderPolicyGrid(articles){
+  if(!articles.length){
+    document.getElementById('policy-grid').innerHTML = '<p style="color:#999;grid-column:1/-1">No policy stories found.</p>';
+    return;
+  }
+  const subset = articles.slice(0,4);
+  document.getElementById('policy-grid').innerHTML = subset.map((a,i) => `
+    <div class='article-card' onclick="window.open('${a.url}','_blank')" data-pidx='${i}'>
+      ${imgOrPlaceholder(a.urlToImage || '', getTag(a,'policy'), 140, a.title)}
+      <div class='article-card-tag'>${getTag(a,'policy')}</div>
+      <div class='article-card-title'>${a.title}</div>
+      <p class='article-card-excerpt'>${(a.description||'').slice(0,120)}...</p>
+      <div class='article-card-meta'>${a.source.name} · ${timeAgo(a.publishedAt)}</div>
+    </div>`).join('');
+  subset.forEach(async (a, i) => {
+    if(!a.urlToImage){
+      const og = await fetchOGImage(a.url);
+      if(og){
+        const card = document.querySelector('[data-pidx="' + i + '"]');
+        if(card){ const ph = card.querySelector('div[style*="background:"]'); if(ph){ const img = document.createElement('img'); img.src=og; img.alt=''; img.style.cssText='width:100%;height:140px;object-fit:cover;display:block;margin-bottom:12px'; ph.replaceWith(img); } }
+      }
+    }
+  });
+}
+
+async function renderFundingGrid(articles){
+  if(!articles.length){
+    document.getElementById('funding-grid').innerHTML = '<p style="color:#999;grid-column:1/-1">No funding stories found.</p>';
+    return;
+  }
+  const subset = articles.slice(0,4);
+  document.getElementById('funding-grid').innerHTML = subset.map((a,i) => `
+    <div class='article-card' onclick="window.open('${a.url}','_blank')" data-fidx='${i}'>
+      ${imgOrPlaceholder(a.urlToImage || '', 'Funding', 140, a.title)}
+      <div class='article-card-tag'>Funding</div>
+      <div class='article-card-title'>${a.title}</div>
+      <p class='article-card-excerpt'>${(a.description||'').slice(0,120)}...</p>
+      <div class='article-card-meta'>${a.source.name} · ${timeAgo(a.publishedAt)}</div>
+    </div>`).join('');
+  subset.forEach(async (a, i) => {
+    if(!a.urlToImage){
+      const og = await fetchOGImage(a.url);
+      if(og){
+        const card = document.querySelector('[data-fidx="' + i + '"]');
+        if(card){ const ph = card.querySelector('div[style*="background:"]'); if(ph){ const img = document.createElement('img'); img.src=og; img.alt=''; img.style.cssText='width:100%;height:140px;object-fit:cover;display:block;margin-bottom:12px'; ph.replaceWith(img); } }
+      }
+    }
+  });
+}
+
+function updateTicker(articles){
+  if(!articles.length) return;
+  const items = articles.slice(0,10).map(a => `<span>${a.title}</span>`).join('');
+  document.getElementById('ticker-text').innerHTML = items + items;
+}
+
+function updateBreaking(articles){
+  if(!articles.length) return;
+  document.getElementById('breaking-text').textContent = articles[0].title;
+}
+
+// ─── MAIN NEWS FILTER ─────────────────────────────────────────────────────────
+async function filterNews(category, tabEl){
+  currentCategory = category;
+  if(tabEl && !tabEl.classList.contains('dropdown-item')){
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+  }
+  document.querySelectorAll('.community-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById('hero-section').innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading top story...</div>';
+  document.getElementById('story-grid').innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="loading-spinner"></div>Loading stories...</div>';
+  document.getElementById('sidebar-stories').innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
+
+  const articles = await fetchNews(category);
+  allArticles = articles;
+
+  renderHero(articles[0], category);
+  renderStoryGrid(articles.slice(1), category);
+  renderSidebar(articles, category);
+  updateBreaking(articles);
+}
+
+function searchNews(val){
+  if(!val.trim()) return;
+  const filtered = allArticles.filter(a =>
+    (a.title||'').toLowerCase().includes(val.toLowerCase()) ||
+    (a.description||'').toLowerCase().includes(val.toLowerCase())
+  );
+  if(filtered.length){
+    renderHero(filtered[0], currentCategory);
+    renderStoryGrid(filtered.slice(1), currentCategory);
+    renderSidebar(filtered, currentCategory);
+  }
+}
+
+// ─── RSS PANEL ────────────────────────────────────────────────────────────────
+function toggleRSS(tabEl){
+  rssPanelOpen = !rssPanelOpen;
+  const panel = document.getElementById('rss-panel');
+  const rssTab = document.getElementById('rss-nav-tab');
+  if(rssPanelOpen){
+    panel.classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    rssTab.classList.add('active');
+    loadRSSCategory(currentRSSCategory, document.querySelector('.rss-cat-btn.active'));
+  } else {
+    panel.classList.remove('active');
+    rssTab.classList.remove('active');
+  }
+}
+
+function closeRSS(){
+  rssPanelOpen = false;
+  document.getElementById('rss-panel').classList.remove('active');
+  document.getElementById('rss-nav-tab').classList.remove('active');
+}
+
+async function loadRSSCategory(key, btnEl){
+  currentRSSCategory = key;
+  if(btnEl){
+    document.querySelectorAll('.rss-cat-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  const grid = document.getElementById('rss-feed-grid');
+  grid.innerHTML = '<div class="rss-loading"><div class="loading-spinner"></div>Loading feed...</div>';
+
+  const config = RSS_PANEL_FEEDS[key];
+  if(!config){ grid.innerHTML = '<div class="rss-loading">No feeds configured.</div>'; return; }
+
+  let articles = [];
+  const promises = config.feeds.slice(0,3).map(f => fetchFeed(f));
+  const results = await Promise.allSettled(promises);
+  results.forEach(r => { if(r.status==='fulfilled') articles = articles.concat(r.value); });
+
+  if(!articles.length){
+    grid.innerHTML = '<div class="rss-loading">No stories found. Try another category.</div>';
+    return;
+  }
+
+  grid.innerHTML = articles.slice(0,9).map(a => `
+    <div class="rss-item" onclick="window.open('${a.url}','_blank')">
+      ${a.urlToImage ? `<img src="${a.urlToImage}" alt="" style="width:100%;height:120px;object-fit:cover;margin-bottom:10px;border:1px solid var(--gray-100)" onerror="this.style.display='none'">` : ''}
+      <div class="rss-item-tag">${config.label}</div>
+      <div class="rss-item-title">${a.title}</div>
+      <div class="rss-item-desc">${(a.description||'').slice(0,100)}${a.description && a.description.length>100?'...':''}</div>
+      <div class="rss-item-meta">${a.source.name} · ${timeAgo(a.publishedAt)}</div>
+    </div>`).join('');
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+async function loadAll(){
+  document.getElementById('current-date').textContent = getDate();
+  filterNews('all', null);
+  const policyArticles = await fetchNews('policy');
+  renderPolicyGrid(policyArticles);
+  const fundingArticles = await fetchNews('funding');
+  renderFundingGrid(fundingArticles);
+}
+
+loadAll();
+</script>
+</body>
+</html>
