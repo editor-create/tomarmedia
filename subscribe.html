@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src * data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src *;">
+<title>Subscribe — Tomar Media</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tomar Media">
+<meta property="og:url" content="https://tomarmedia.pages.dev/subscribe">
+<meta property="og:title" content="Subscribe — Tomar Media">
+<meta property="og:description" content="Stay ahead of AEC procurement, federal policy, and diversity business news across New York and New Jersey. Free and premium plans available.">
+<meta name="description" content="Subscribe to Tomar Media — daily AEC news, procurement alerts, and policy updates for WBE, MBE, DBE, VOB and LGBTQ+ certified business owners in NY and NJ.">
+<meta name="author" content="Tomar Media">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F5C400;--orange-dark:#D4A900;
+  --black:#0D0D0D;--white:#FFFFFF;
+  --gray-50:#F9F9F9;--gray-100:#F2F2F2;--gray-200:#E5E5E5;
+  --gray-400:#999999;--gray-600:#555555;--gray-800:#222222;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Barlow',sans-serif;background:#fff;color:var(--black);line-height:1.5}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ── TICKER ── */
+.ticker{background:var(--black);color:#fff;padding:0;overflow:hidden;white-space:nowrap;height:32px;display:flex;align-items:center}
+.ticker-label{background:var(--orange);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;letter-spacing:2px;padding:0 14px;height:100%;display:flex;align-items:center;text-transform:uppercase;flex-shrink:0}
+.ticker-track{overflow:hidden;flex:1;height:100%;position:relative}
+.ticker-inner{display:flex;align-items:center;position:absolute;top:0;left:0;height:100%;will-change:transform}
+.ticker-inner span{margin:0 40px;font-size:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
+.ticker-inner span::before{content:'◆ ';color:var(--orange)}
+
+/* ── HEADER ── */
+header{background:var(--orange);padding:0}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:28px 40px;border-bottom:1px solid rgba(0,0,0,0.15)}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#000;letter-spacing:4px;line-height:1;display:block}
+.logo span{display:block;font-size:12px;font-weight:600;letter-spacing:4px;color:rgba(0,0,0,0.7);margin-top:8px;text-transform:uppercase;white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:12px}
+.btn-subscribe-now{background:#000;color:#F5C400;padding:10px 22px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;border:none;cursor:pointer;text-transform:uppercase;border-radius:30px;white-space:nowrap;text-decoration:none;display:inline-block}
+.btn-learn-more{background:transparent;color:#000;padding:10px 22px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;border:2px solid rgba(0,0,0,0.5);cursor:pointer;text-transform:uppercase;border-radius:30px;white-space:nowrap;text-decoration:none;display:inline-block}
+.social-icons{display:flex;align-items:center;gap:8px}
+.social-icon{width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s;text-decoration:none;flex-shrink:0}
+.social-icon:hover{background:rgba(0,0,0,0.25)}
+.social-icon svg{width:17px;height:17px;fill:#000}
+.date-line{font-size:11px;color:rgba(0,0,0,0.6);letter-spacing:1px;text-transform:uppercase}
+.status-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,0.6);margin-top:4px}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* ── NAV ── */
+nav{background:#fff;border-bottom:3px solid var(--orange);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.nav-inner{display:flex;align-items:center;padding:0 40px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{padding:14px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-600);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;white-space:nowrap;transition:all 0.2s;display:inline-block}
+.nav-tab:hover{color:var(--orange)}
+.nav-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+
+/* ── LAYOUT ── */
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+
+/* ── HERO BAND ── */
+.sub-hero{background:var(--black);padding:60px 40px;text-align:center}
+.sub-hero-inner{max-width:700px;margin:0 auto}
+.sub-kicker{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.sub-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:54px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:16px;letter-spacing:1px}
+.sub-hero h1 span{color:var(--orange)}
+.sub-hero p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:560px;margin:0 auto 28px}
+.sub-hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.cert-pill{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)}
+
+/* ── QUICK SIGNUP BAR ── */
+.quick-signup{background:var(--orange);padding:28px 40px}
+.quick-signup-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.quick-signup label{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:#000;white-space:nowrap}
+.quick-signup input[type="email"]{flex:1;min-width:220px;padding:12px 16px;font-size:14px;font-family:'Barlow',sans-serif;border:none;outline:none;background:#fff}
+.quick-signup select{padding:12px 14px;font-size:13px;font-family:'Barlow Condensed',sans-serif;font-weight:700;border:none;outline:none;background:#fff;text-transform:uppercase;letter-spacing:1px;cursor:pointer}
+.quick-signup button{background:#000;color:#F5C400;padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;border:none;cursor:pointer;text-transform:uppercase;white-space:nowrap}
+.quick-signup button:hover{background:#222}
+.quick-signup-note{font-size:11px;color:rgba(0,0,0,0.5);width:100%;text-align:center;margin-top:4px}
+
+/* ── PLANS ── */
+.plans-section{padding:64px 0 48px}
+.plans-section h2{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray-400);text-align:center;margin-bottom:32px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan-card{border:1px solid var(--gray-200);padding:32px 28px;position:relative;transition:border-color 0.2s}
+.plan-card.featured{border:3px solid var(--orange);padding:30px 26px}
+.plan-featured-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 16px;white-space:nowrap}
+.plan-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--black);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.plan-price{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--black);line-height:1;margin:12px 0 4px}
+.plan-price span{font-size:16px;font-weight:600;color:var(--gray-400)}
+.plan-billing{font-size:12px;color:var(--gray-400);margin-bottom:20px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:0.5px}
+.plan-divider{border:none;border-top:1px solid var(--gray-200);margin:20px 0}
+.plan-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13px;color:var(--gray-800);line-height:1.4}
+.plan-check{width:16px;height:16px;border-radius:50%;background:var(--orange);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.plan-check::after{content:'✓';font-size:9px;font-weight:700;color:#000}
+.plan-x{width:16px;height:16px;border-radius:50%;background:var(--gray-200);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.plan-x::after{content:'—';font-size:9px;font-weight:700;color:var(--gray-400)}
+.plan-btn{display:block;width:100%;padding:13px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;margin-top:24px;text-align:center}
+.plan-btn-free{background:var(--gray-100);color:var(--black)}
+.plan-btn-free:hover{background:var(--gray-200)}
+.plan-btn-pro{background:var(--orange);color:#000}
+.plan-btn-pro:hover{background:var(--orange-dark)}
+.plan-btn-org{background:var(--black);color:var(--orange)}
+.plan-btn-org:hover{background:#222}
+
+/* ── WHAT YOU GET ── */
+.what-section{background:var(--black);padding:64px 0}
+.what-section h2{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:#fff;text-align:center;margin-bottom:8px}
+.what-section .sub{font-size:14px;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:48px}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.06)}
+.what-item{background:var(--black);padding:32px 28px}
+.what-icon{width:44px;height:44px;background:var(--orange);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:#000}
+.what-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
+.what-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
+
+/* ── LEARN MORE ANCHOR ── */
+.learn-section{padding:64px 0}
+.learn-section h2{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray-400);text-align:center;margin-bottom:32px}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.learn-copy h3{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--black);line-height:1.1;margin-bottom:16px}
+.learn-copy p{font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:14px}
+.learn-copy .highlight{background:var(--orange);color:#000;font-weight:700;padding:0 4px}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.stat-box{background:var(--black);padding:20px;text-align:center}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--orange);line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.5);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.learn-signup{background:var(--gray-50);padding:36px;border:1px solid var(--gray-200)}
+.learn-signup h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--black);margin-bottom:8px}
+.learn-signup p{font-size:13px;color:var(--gray-600);margin-bottom:20px;line-height:1.6}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-600);margin-bottom:5px}
+.form-group input,.form-group select{width:100%;padding:11px 14px;border:1px solid var(--gray-200);font-size:13px;font-family:'Barlow',sans-serif;outline:none;background:#fff}
+.form-group input:focus,.form-group select:focus{border-color:var(--orange)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;background:var(--orange);color:#000;border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-top:8px}
+.form-submit:hover{background:var(--orange-dark)}
+.form-note{font-size:11px;color:var(--gray-400);text-align:center;margin-top:10px}
+
+/* ── TESTIMONIAL STRIP ── */
+.testimonial-strip{background:var(--orange);padding:40px}
+.testimonial-inner{max-width:700px;margin:0 auto;text-align:center}
+.testimonial-quote{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:#000;line-height:1.3;margin-bottom:12px}
+.testimonial-attr{font-size:13px;color:rgba(0,0,0,0.6);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{background:var(--black);color:#fff;padding:40px 0 24px;margin-top:0}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:24px 40px 0;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.3);margin-left:16px}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6)}
+.footer-links{display:flex;gap:32px;justify-content:center;padding:28px 40px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.footer-links a:hover{color:var(--orange)}
+
+/* ── SUCCESS STATE ── */
+.success-msg{display:none;background:#000;border-left:4px solid var(--orange);padding:14px 18px;margin-top:12px;font-size:13px;color:rgba(245,196,0,0.9);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .header-top{padding:12px 20px}
+  .logo{font-size:32px}
+  .container{padding:0 16px}
+  .plans-grid{grid-template-columns:1fr}
+  .what-grid{grid-template-columns:1fr}
+  .learn-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .sub-hero{padding:40px 20px}
+  .sub-hero h1{font-size:36px}
+  .quick-signup{padding:20px}
+  .nav-inner{padding:0 16px}
+  .footer-links{gap:16px;padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-label">Subscribe</span>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="ticker-text">
+      <span>Daily AEC news for certified diverse business owners</span>
+      <span>Procurement alerts · Federal policy · Funding opportunities</span>
+      <span>NY &amp; NJ focused · Free forever plan available</span>
+      <span>Daily AEC news for certified diverse business owners</span>
+      <span>Procurement alerts · Federal policy · Funding opportunities</span>
+      <span>NY &amp; NJ focused · Free forever plan available</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div>
+      <a href="index.html" class="logo">TOMAR MEDIA
+        <span>Empowering Diverse Businesses in Architecture, Engineering &amp; Construction</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <div>
+        <div class="date-line" id="current-date"></div>
+        <div class="status-badge"><span class="status-dot"></span> Live</div>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank" class="social-icon" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+      <a href="subscribe.html" class="btn-subscribe-now active-page">Subscribe Now →</a>
+      <a href="subscribe.html#learn" class="btn-learn-more">Learn More</a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-tab">All</a>
+    <a href="voices.html" class="nav-tab">Voices</a>
+    <a href="index.html" class="nav-tab">WBE</a>
+    <a href="index.html" class="nav-tab">MBE</a>
+    <a href="index.html" class="nav-tab">DBE</a>
+    <a href="index.html" class="nav-tab">VOB</a>
+    <a href="index.html" class="nav-tab">LGBTQ+</a>
+    <a href="index.html" class="nav-tab">DE&amp;I</a>
+    <a href="index.html" class="nav-tab">AEC News</a>
+    <a href="index.html" class="nav-tab">Federal</a>
+    <a href="index.html" class="nav-tab">Funding</a>
+    <a href="index.html" class="nav-tab">Policy</a>
+    <a href="subscribe.html" class="nav-tab active">Subscribe</a>
+    <a href="about.html" class="nav-tab">About</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="sub-hero">
+  <div class="sub-hero-inner">
+    <div class="sub-kicker">Tomar Media · Daily Briefing</div>
+    <h1>Stay Ahead of<br><span>AEC in New York</span><br>&amp; New Jersey</h1>
+    <p>Procurement alerts, federal policy, funding opportunities, and diversity business news — delivered daily to certified AEC firm owners across the Northeast.</p>
+    <div class="sub-hero-badges">
+      <span class="cert-pill">WBE</span>
+      <span class="cert-pill">MBE</span>
+      <span class="cert-pill">DBE</span>
+      <span class="cert-pill">VOB</span>
+      <span class="cert-pill">LGBTQ+</span>
+      <span class="cert-pill">DE&amp;I</span>
+      <span class="cert-pill">8(a)</span>
+      <span class="cert-pill">SBE</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK SIGNUP BAR -->
+<div class="quick-signup">
+  <div class="quick-signup-inner">
+    <label>Free daily briefing →</label>
+    <input type="email" id="quick-email" placeholder="your@email.com">
+    <select id="quick-cert">
+      <option value="">Certification type</option>
+      <option>WBE</option>
+      <option>MBE</option>
+      <option>DBE</option>
+      <option>VOB</option>
+      <option>LGBTQ+</option>
+      <option>DE&amp;I</option>
+      <option>8(a)</option>
+      <option>Other / Multiple</option>
+    </select>
+    <button onclick="quickSignup()">Subscribe Free →</button>
+  </div>
+  <div class="quick-signup-note">No credit card. No spam. Unsubscribe anytime.</div>
+  <div class="success-msg" id="quick-success">✓ You're in — check your inbox to confirm your subscription.</div>
+</div>
+
+<!-- PLANS -->
+<div class="plans-section">
+  <div class="container">
+    <h2>Choose your plan</h2>
+    <div class="plans-grid">
+
+      <!-- FREE -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0<span>/mo</span></div>
+        <div class="plan-billing">Free forever</div>
+        <hr class="plan-divider">
+        <div class="plan-feature"><div class="plan-check"></div>Daily AEC news digest</div>
+        <div class="plan-feature"><div class="plan-check"></div>NY/NJ procurement headlines</div>
+        <div class="plan-feature"><div class="plan-check"></div>Federal policy alerts</div>
+        <div class="plan-feature"><div class="plan-check"></div>Voices monthly digest</div>
+        <div class="plan-feature"><div class="plan-check"></div>Certification news roundup</div>
+        <div class="plan-feature"><div class="plan-x"></div>Full RSS feed access</div>
+        <div class="plan-feature"><div class="plan-x"></div>Agency procurement filters</div>
+        <div class="plan-feature"><div class="plan-x"></div>Priority funding alerts</div>
+        <div class="plan-feature"><div class="plan-x"></div>Business Spotlight eligibility</div>
+        <button class="plan-btn plan-btn-free" onclick="scrollToForm()">Get Started Free</button>
+      </div>
+
+      <!-- PRO — FEATURED -->
+      <div class="plan-card featured">
+        <div class="plan-featured-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$9<span>/mo</span></div>
+        <div class="plan-billing">Billed monthly · Cancel anytime</div>
+        <hr class="plan-divider">
+        <div class="plan-feature"><div class="plan-check"></div>Everything in Free</div>
+        <div class="plan-feature"><div class="plan-check"></div>Full RSS feed panel access</div>
+        <div class="plan-feature"><div class="plan-check"></div>Agency procurement filters (NYC + NJ)</div>
+        <div class="plan-feature"><div class="plan-check"></div>Priority funding &amp; grant alerts</div>
+        <div class="plan-feature"><div class="plan-check"></div>Weekly policy deep-dive</div>
+        <div class="plan-feature"><div class="plan-check"></div>Certification deadline tracker</div>
+        <div class="plan-feature"><div class="plan-check"></div>Early access to Voices content</div>
+        <div class="plan-feature"><div class="plan-x"></div>Business Spotlight eligibility</div>
+        <button class="plan-btn plan-btn-pro" onclick="scrollToForm('pro')">Start Pro — $9/mo</button>
+      </div>
+
+      <!-- ORG -->
+      <div class="plan-card">
+        <div class="plan-name">Organization</div>
+        <div class="plan-price">$49<span>/mo</span></div>
+        <div class="plan-billing">Up to 10 team members</div>
+        <hr class="plan-divider">
+        <div class="plan-feature"><div class="plan-check"></div>Everything in Pro</div>
+        <div class="plan-feature"><div class="plan-check"></div>Up to 10 team seats</div>
+        <div class="plan-feature"><div class="plan-check"></div>Business Spotlight eligible (1/yr)</div>
+        <div class="plan-feature"><div class="plan-check"></div>Voices column submission priority</div>
+        <div class="plan-feature"><div class="plan-check"></div>Custom procurement alert filters</div>
+        <div class="plan-feature"><div class="plan-check"></div>Monthly briefing call with editor</div>
+        <div class="plan-feature"><div class="plan-check"></div>Logo in Tomar Media footer</div>
+        <div class="plan-feature"><div class="plan-check"></div>Dedicated account contact</div>
+        <button class="plan-btn plan-btn-org" onclick="scrollToForm('org')">Contact for Org Plan</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<div class="what-section">
+  <div class="container">
+    <h2>What's Inside Every Issue</h2>
+    <p class="sub">Real-time aggregation from 20+ verified AEC and government sources — filtered for the NY/NJ market</p>
+    <div class="what-grid">
+      <div class="what-item">
+        <div class="what-icon">AEC</div>
+        <div class="what-title">Live AEC News</div>
+        <div class="what-desc">ENR, Construction Dive, BDC Network, Crain's NY, Arch Paper, Bisnow NY — aggregated in real time, filtered for Northeast AEC.</div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">$</div>
+        <div class="what-title">Procurement Alerts</div>
+        <div class="what-desc">NYC DOT, MTA, DDC, NYCHA, NYCEDC, Port Authority, NJ DOT, NJ Transit — contract opportunities filtered for certified MWBE firms.</div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">FED</div>
+        <div class="what-title">Federal Policy Watch</div>
+        <div class="what-desc">DBE, 8(a), MWBE legislation, USDOT guidance, EEOC enforcement, SBA program updates — tracked daily and explained clearly.</div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">$$$</div>
+        <div class="what-title">Funding &amp; Grants</div>
+        <div class="what-desc">SBA loans, MBDA grants, federal SBIR programs, and state funding opportunities — consolidated from official sources.</div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">VOI</div>
+        <div class="what-title">Voices Platform</div>
+        <div class="what-desc">Monthly opinion columns, business spotlights, and policy commentary from WBE, MBE, DBE, VOB, and LGBTQ+ firm owners.</div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">CERT</div>
+        <div class="what-title">Certification News</div>
+        <div class="what-desc">WBE, MBE, DBE, LGBTQ+ certification updates, deadline reminders, and process guidance for NY and NJ programs.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-strip">
+  <div class="testimonial-inner">
+    <div class="testimonial-quote">"The only place I can find procurement news, policy updates, and certification guidance all in one feed — built for firms like mine."</div>
+    <div class="testimonial-attr">WBE-Certified Principal · Civil Engineering Firm · New York, NY</div>
+  </div>
+</div>
+
+<!-- LEARN MORE + FULL FORM -->
+<div class="learn-section" id="learn">
+  <div class="container">
+    <h2>Why Tomar Media</h2>
+    <div class="learn-grid">
+
+      <div class="learn-copy">
+        <h3>Built for the AEC firms the industry keeps talking past.</h3>
+        <p>New York City awards <span class="highlight">$40 billion</span> in contracts every year. Thousands of certified WBE, MBE, DBE, VOB, and LGBTQ+ firms are eligible — but most never hear about opportunities until after the bid window closes.</p>
+        <p>Tomar Media was built to fix that. We aggregate procurement alerts, federal policy, funding news, and AEC project coverage into one real-time feed, tuned specifically for the Northeast and filtered for certified diverse business owners.</p>
+        <p>There is no other digital publication doing this. The information exists — it's just scattered across 20+ agency sites, trade journals, and government feeds. We bring it together so you don't have to.</p>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-num">$40B</div>
+            <div class="stat-label">NYC contracts/yr</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">9,000+</div>
+            <div class="stat-label">Certified M/WBEs in NYC</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Live sources aggregated</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">NY·NJ</div>
+            <div class="stat-label">Northeast focused</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="learn-signup">
+        <h3>Start your free subscription</h3>
+        <p>Get the daily AEC briefing for diverse business owners — free forever. Upgrade anytime for full access.</p>
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="form-first" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="form-last" placeholder="Last name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="form-email" placeholder="your@email.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Firm Name</label>
+            <input type="text" id="form-firm" placeholder="Your firm">
+          </div>
+          <div class="form-group">
+            <label>Certification</label>
+            <select id="form-cert">
+              <option value="">Select...</option>
+              <option>WBE</option>
+              <option>MBE</option>
+              <option>DBE</option>
+              <option>VOB</option>
+              <option>LGBTQ+</option>
+              <option>DE&amp;I</option>
+              <option>8(a)</option>
+              <option>Other / Multiple</option>
+              <option>Not yet certified</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Discipline</label>
+          <select id="form-discipline">
+            <option value="">Select...</option>
+            <option>Architecture</option>
+            <option>Civil / Structural Engineering</option>
+            <option>MEP Engineering</option>
+            <option>Construction Management</option>
+            <option>General Contracting</option>
+            <option>Specialty Contracting</option>
+            <option>Environmental / Geotechnical</option>
+            <option>Planning / Landscape</option>
+            <option>Legal / Consulting</option>
+            <option>Other AEC</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="fullSignup()">Subscribe Free →</button>
+        <div class="form-note">No credit card required. Unsubscribe anytime.</div>
+        <div class="success-msg" id="form-success">✓ You're subscribed — check your inbox to confirm.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">News</a>
+    <a href="voices.html">Voices</a>
+    <a href="subscribe.html">Subscribe</a>
+    <a href="about.html">About</a>
+    <a href="about.html#advertise">Advertise</a>
+    <a href="about.html#mediakit">Media Kit</a>
+    <a href="mailto:editorial@tomarmedia.com">Contact</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Tomar Media · tomarmedia.com</span>
+    <div><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<script>
+function getDate(){ return new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+document.getElementById('current-date').textContent = getDate();
+
+// Ticker
+(function(){
+  const inner = document.getElementById('ticker-text');
+  if(!inner) return;
+  let pos = 0;
+  function tick(){ pos -= 0.4; if(Math.abs(pos) >= inner.scrollWidth/2) pos = 0; inner.style.transform='translateX('+pos+'px)'; requestAnimationFrame(tick); }
+  requestAnimationFrame(tick);
+})();
+
+function quickSignup(){
+  const email = document.getElementById('quick-email').value.trim();
+  if(!email || !email.includes('@')){ alert('Please enter a valid email address.'); return; }
+  document.getElementById('quick-success').style.display = 'block';
+  document.getElementById('quick-email').value = '';
+  document.getElementById('quick-cert').value = '';
+}
+
+function fullSignup(){
+  const email = document.getElementById('form-email').value.trim();
+  if(!email || !email.includes('@')){ alert('Please enter a valid email address.'); return; }
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('form-email').value = '';
+}
+
+function scrollToForm(plan){
+  document.getElementById('learn').scrollIntoView({ behavior:'smooth' });
+}
+</script>
+</body>
+</html>
